@@ -7,7 +7,7 @@ angular.module('szpeje', [
   'szpeje.catalog',
   'szpeje.contact'
 ])
-.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', function($urlRouterProvider, $stateProvider, $locationProvider) {
 
       $urlRouterProvider
         .otherwise('/home');
@@ -17,6 +17,8 @@ angular.module('szpeje', [
           url: '/',
           template: '<ui-view/>'
       });
+
+      $locationProvider.html5Mode(true);
 
     }])
 .run(function(){
