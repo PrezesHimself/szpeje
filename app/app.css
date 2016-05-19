@@ -12,5 +12,16 @@
 [ui-view] {
   margin: auto;
   margin-top: 200px;
-  width:400px;
+  width:750px;
+}
+
+.project {
+  float: left;
+  width: 200px;
+  margin: 25px;
+}
+
+a, a:hover, a:active, a:link {
+  text-decoration: none;
+  color: black;
 }

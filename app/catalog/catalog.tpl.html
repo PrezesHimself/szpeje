@@ -1,10 +1,16 @@
 katalog
 <p>
-  <div data-ng-repeat="project in vm.projects">
+  <div
+    data-ng-repeat="project in vm.projects"
+    nf-if="vm.projects"
+    class="project">
 
          <a href="{{ project.url }}"><h5>{{ project.name }}</h5></a>
          <img src="{{ project.covers['202'] }}"/><br>
 
 
+   </div>
+   <div class="no-projects" ng-if="!vm.projects">
+     loading...
    </div>
 </p>
