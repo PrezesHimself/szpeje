@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--[if gt IE 8]><!--> <html lang="en"  class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body ng-app="szpeje">
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+<div class="nav">
+  <a ui-sref="app.home">Home</a>
+  <a ui-sref="app.contact">Contact</a>
+  <a ui-sref="app.catalog">Catalog</a>
+</div>
+<div ui-view=""></div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+  <script src="app.js"></script>
+
+  <script src="home/home.config.js"></script>
+  <script src="home/home.controller.js"></script>
+
+  <script src="contact/contact.config.js"></script>
+  <script src="contact/contact.controller.js"></script>
+
+  <script src="catalog/catalog.config.js"></script>
+  <script src="catalog/catalog.controller.js"></script>
+
+</body>
+</html>
