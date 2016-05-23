@@ -12,7 +12,7 @@
 [ui-view] {
   margin: auto;
   margin-top: 200px;
-  width:750px;
+  max-width:750px;
 }
 
 .project {
