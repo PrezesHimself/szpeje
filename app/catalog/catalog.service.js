@@ -13,12 +13,11 @@ angular.module('szpeje.catalog')
               var cachedData = cache.get(cacheId);
               var promise
               if (cachedData && (new Date() - cachedData.date) < ONE_MINUTE) {
-                console.log('old')
                  var deferred = $q.defer();
                  deferred.resolve({data:cachedData});
                  return deferred.promise;
               }
-              console.log('new')
+
               var user = 'DelikatesyProjektowe';
               var apiKey = 'ONmbhVbzOEFvhmBHVfkOZfqLN4SX8FIz';
               var url = 'http://behance.net/v2/users/'+ user +'/projects?api_key='+ apiKey +'&callback=JSON_CALLBACK';

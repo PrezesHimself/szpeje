@@ -7,13 +7,10 @@
         $stateProvider
             .state('app.catalog', {
                 url: 'catalog',
-                templateUrl: 'catalog/catalog.tpl.html',
+                templateUrl: 'tpl/catalog/catalog.tpl.html',
                 controller: 'CatalogController',
                 controllerAs: 'vm'
             });
-    })
-    .run(function() {
-      console.log('test');
-    })
+    });
 
 }());

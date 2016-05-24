@@ -7,13 +7,10 @@
         $stateProvider
             .state('app.home', {
                 url: 'home',
-                templateUrl: 'home/home.tpl.html',
+                templateUrl: 'tpl/home/home.tpl.html',
                 controller: 'HomeController',
                 controllerAs: 'vm'
             });
-    })
-    .run(function() {
-      console.log('test');
-    })
+    });
 
 }());

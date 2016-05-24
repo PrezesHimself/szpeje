@@ -7,13 +7,10 @@
         $stateProvider
             .state('app.contact', {
                 url: 'contact',
-                templateUrl: 'contact/contact.tpl.html',
+                templateUrl: 'tpl/contact/contact.tpl.html',
                 controller: 'ContactController',
                 controllerAs: 'vm'
             });
-    })
-    .run(function() {
-      console.log('test');
-    })
+    });
 
 }());

@@ -11,27 +11,40 @@ var sass = require('gulp-sass');
 gulp.task('default', ['browser-sync'], function () {
 });
 
-gulp.task('build', ['sass'], function () {
+gulp.task('build', ['js', 'sass', 'html'], function () {
+});
+
+gulp.task('js', function () {
 		return gulp.src([
 				'./bower_components/angular/angular.js',
 				'./bower_components/angular-ui-router/release/angular-ui-router.js',
-				'./app/**/*.js',
-				'!./app/szpeje.js'
+				'./app/**/*.js'
 		])
 	  	.pipe(concat('szpeje.js'))
 			.pipe(ngAnnotate())
 	  	.pipe(uglify())
-	    .pipe(gulp.dest('./app/'));
+	    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('sass', function () {
   return gulp.src('./app/szpeje.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./app/'));
+    .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('html', function () {
+
+	gulp.src('./app/**/*.tpl.html')
+    .pipe(gulp.dest('./dist/tpl'));
+
+  return gulp.src('./app/index.html')
+    .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('watch', function () {
-  gulp.watch('./app/**/*.scss', ['sass', browserSync.reload]);
+  gulp.watch('./app/index.html', ['html', browserSync.reload]);
+  gulp.watch('./app/**/*.js', ['js', browserSync.reload]);
+  return gulp.watch('./app/**/*.scss', ['sass', browserSync.reload]);
 });
 
 gulp.task('browser-sync', ['nodemon', 'build', 'watch'], function() {
