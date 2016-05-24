@@ -1,0 +1,22 @@
+.nav {
+  position: fixed;
+  height: 100px;
+  padding-top: 100px;
+  background-color: white;
+  text-align: center;
+  width: 100vw;
+  top: 0px; }
+
+[ui-view] {
+  margin: auto;
+  margin-top: 200px;
+  max-width: 750px; }
+
+.project {
+  float: left;
+  width: 200px;
+  margin: 25px; }
+
+a, a:hover, a:active, a:link {
+  text-decoration: none;
+  color: black; }
