@@ -3,7 +3,20 @@ angular.module('szpeje.catalog')
 
         var _self = this;
 
+
+        var user = 'DelikatesyProjektowe';
+        var apiKey = 'ONmbhVbzOEFvhmBHVfkOZfqLN4SX8FIz';
+
         var cache = $cacheFactory('dataCache');
+
+            this.getProject = function(projectId) {
+                var url = 'http://behance.net/v2/projects/'+ projectId +'?api_key='+ apiKey +'&callback=JSON_CALLBACK';
+                promise = $http.jsonp(url).error(function (response, status) {
+                    alert(status);
+                });
+                
+                return promise;
+            }
 
             this.getSzpeje = function() {
 
@@ -17,9 +30,6 @@ angular.module('szpeje.catalog')
                  deferred.resolve({data:cachedData});
                  return deferred.promise;
               }
-
-              var user = 'DelikatesyProjektowe';
-              var apiKey = 'ONmbhVbzOEFvhmBHVfkOZfqLN4SX8FIz';
               var url = 'http://behance.net/v2/users/'+ user +'/projects?api_key='+ apiKey +'&callback=JSON_CALLBACK';
               promise = $http.jsonp(url).error(function (response, status) {
                 alert(status);

@@ -6,7 +6,7 @@
     .config(function($stateProvider) {
         $stateProvider
             .state('app.catalog', {
-                url: 'catalog',
+                url: 'catalog/:projectId',
                 templateUrl: 'tpl/catalog/catalog.tpl.html',
                 controller: 'CatalogController',
                 controllerAs: 'vm'

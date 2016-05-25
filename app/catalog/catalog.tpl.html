@@ -1,16 +1,25 @@
-katalog
 <p>
   <div
     data-ng-repeat="project in vm.projects"
     nf-if="vm.projects"
-    class="project">
-
+    class="projects">
+       <a ui-sref="app.catalog({projectId: project.id})">
          <h5>{{ project.name }}</h5>
          <img src="{{ project.covers['202'] }}"/><br>
+       </a>
 
 
    </div>
-   <div class="no-projects" ng-if="!vm.projects">
+
+   <div class="project"
+   nf-if="vm.project">
+      <h2>{{vm.project.name}}</h2>
+      <div
+        data-ng-repeat="module in vm.project.modules">
+          <img src="{{ module.src }}"/>
+      </div>
+   </div>
+   <div class="no-projects" ng-if="!vm.projects && !vm.project">
      loading...
    </div>
 </p>

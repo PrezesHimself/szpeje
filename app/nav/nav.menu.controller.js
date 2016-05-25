@@ -7,9 +7,8 @@
 
         this.hide = hide;
 
-        function hide(e) {
+        function hide() {
           $uibModalInstance.close();
-          e.stopPropagation();
         };
 
     }

@@ -15,23 +15,28 @@
   text-align: center;
   width: 100vw;
   top: 0px;
+  height: 100px;
   border-bottom: 1px solid black;
 }
 
 
 [ui-view] {
   margin: auto;
-  margin-top: 200px;
+  margin-top: 100px;
   max-width: 750px;
   padding: 10px;
 }
 
-.project {
+.projects {
   float: left;
   width: 200px;
   margin: 25px;
 }
-
+.project {
+    img {
+        max-width: 100%;
+    }
+}
 a, a:hover, a:active, a:link {
   text-decoration: none;
   color: black;
