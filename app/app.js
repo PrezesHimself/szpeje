@@ -5,7 +5,10 @@ angular.module('szpeje', [
   'ui.router',
   'szpeje.home',
   'szpeje.catalog',
-  'szpeje.contact'
+  'szpeje.contact',
+  'szpeje.nav',
+  'ui.bootstrap',
+  'ngAside'
 ])
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', function($urlRouterProvider, $stateProvider, $locationProvider) {
 

@@ -11,13 +11,16 @@ var sass = require('gulp-sass');
 gulp.task('default', ['browser-sync'], function () {
 });
 
-gulp.task('build', ['js', 'sass', 'html'], function () {
+gulp.task('build', ['js', 'sass', 'html', 'images'], function () {
 });
 
 gulp.task('js', function () {
 		return gulp.src([
 				'./bower_components/angular/angular.js',
 				'./bower_components/angular-ui-router/release/angular-ui-router.js',
+				'./bower_components/angular-aside/dist/js/angular-aside.js',
+				'./bower_components/angular-bootstrap/ui-bootstrap.js',
+				'./bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
 				'./app/**/*.js'
 		])
 	  	.pipe(concat('szpeje.js'))
@@ -41,9 +44,16 @@ gulp.task('html', function () {
     .pipe(gulp.dest('./dist/'));
 });
 
+gulp.task('images', function () {
+
+	gulp.src('./app/**/*.jpg')
+    .pipe(gulp.dest('./dist'));
+});
+
 gulp.task('watch', function () {
-  gulp.watch('./app/index.html', ['html', browserSync.reload]);
+  gulp.watch('./app/**/*.html', ['html', browserSync.reload]);
   gulp.watch('./app/**/*.js', ['js', browserSync.reload]);
+  gulp.watch('./app/**/*.jpg', ['images', browserSync.reload]);
   return gulp.watch('./app/**/*.scss', ['sass', browserSync.reload]);
 });
 

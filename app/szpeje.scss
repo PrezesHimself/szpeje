@@ -1,18 +1,29 @@
+@import "../bower_components/angular-aside/dist/css/angular-aside";
+@import "../bower_components/angular-bootstrap/ui-bootstrap-csp";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial';
+  box-sizing: border-box;
+}
+
 .nav {
   position: fixed;
-  height: 100px;
-  padding-top: 100px;
+  z-index: 0;
   background-color: white;
   text-align: center;
   width: 100vw;
   top: 0px;
+  border-bottom: 1px solid black;
 }
 
 
 [ui-view] {
   margin: auto;
   margin-top: 200px;
-  max-width:750px;
+  max-width: 750px;
+  padding: 10px;
 }
 
 .project {
@@ -24,4 +35,27 @@
 a, a:hover, a:active, a:link {
   text-decoration: none;
   color: black;
+}
+
+ol, ul {
+    list-style: none outside none;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    font-size: 100%;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+// animation
+
+.modal-open #content {
+  -webkit-transition:all .2s, -webkit-transform .2s;
+  transition:all .2s ease-out, -webkit-transform .2s
+}
+.modal-open.left #content {
+  transform: translate(320px, 0);
 }

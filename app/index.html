@@ -8,16 +8,15 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="szpeje.css" media="screen" title="no title" charset="utf-8">
-
+<link data-require="bootstrap-css@3.2.0" data-semver="3.2.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
 </head>
 <body ng-app="szpeje">
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 <div class="nav">
-  <a ui-sref="app.home">Home</a>
-  <a ui-sref="app.contact">Contact</a>
-  <a ui-sref="app.catalog">Catalog</a>
+    <img src="assets/logo.jpg" alt="" />
+    <szpeje-nav></szpeje-nav>
 </div>
 <div ui-view=""></div>
 

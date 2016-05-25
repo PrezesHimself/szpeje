@@ -4,7 +4,6 @@
 
     function HomeController() {
         var _self = this;
-        console.log('gogo');
     }
 
     HomeController.$inject = []
