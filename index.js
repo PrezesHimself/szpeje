@@ -8,7 +8,7 @@ var auth = require('basic-auth');
 app.use(function(req, res, next) {
     var user = auth(req);
 
-    if (user === undefined || user['name'] !== 'szpeje' || user['pass'] !== 'I said good day!') {
+    if (user === undefined || user['name'] !== 'szpeje' || user['pass'] !== 'goodday') {
         res.statusCode = 401;
         res.setHeader('WWW-Authenticate', 'Basic realm="MyRealmName"');
         res.end('Unauthorized');
