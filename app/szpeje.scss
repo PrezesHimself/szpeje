@@ -9,6 +9,9 @@
   padding: 0;
   font-family: 'Arial';
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+-webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+outline: none !important;
 }
 
 .nav {
@@ -25,9 +28,10 @@
 
 [ui-view] {
   margin: auto;
-  margin-top: 100px;
   max-width: 750px;
   padding: 10px;
+
+  padding-top: 100px;
 }
 
 .projects {
@@ -60,10 +64,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 // animation
 
-.modal-open #content {
+.content{
   -webkit-transition:all .2s, -webkit-transform .2s;
   transition:all .2s ease-out, -webkit-transform .2s
 }
-.modal-open.left #content {
-  transform: translate(320px, 0);
+.modal-open .content{
+  transform: translate(-80px, 0);
 }

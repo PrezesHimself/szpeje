@@ -10,10 +10,15 @@
 .modal-dialog, .modal-content {
     background: red;
     text-align: right;
+    min-height: 100vh;
 
     a {
         display: block;
         height: 35px;
         padding: 10px;
     }
+}
+
+.modal {
+    min-height: 100vh;
 }
