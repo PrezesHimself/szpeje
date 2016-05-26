@@ -1,5 +1,8 @@
 @import "../bower_components/angular-aside/dist/css/angular-aside";
 @import "../bower_components/angular-bootstrap/ui-bootstrap-csp";
+@import 'nav/nav';
+
+:focus {outline:none;}
 
 * {
   margin: 0;
