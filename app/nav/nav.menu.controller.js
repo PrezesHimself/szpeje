@@ -11,6 +11,8 @@
           $uibModalInstance.close();
         };
 
+        console.log(_self);
+
     }
 
     MenuController.$inject = [

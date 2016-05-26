@@ -17,6 +17,7 @@ gulp.task('build', ['js', 'sass', 'html', 'images'], function () {
 gulp.task('js', function () {
 		return gulp.src([
 				'./bower_components/angular/angular.js',
+				'./bower_components/angular-animate/angular-animate.js',
 				'./bower_components/angular-ui-router/release/angular-ui-router.js',
 				'./bower_components/angular-aside/dist/js/angular-aside.js',
 				'./bower_components/angular-bootstrap/ui-bootstrap.js',
@@ -24,8 +25,8 @@ gulp.task('js', function () {
 				'./app/**/*.js'
 		])
 	  	.pipe(concat('szpeje.js'))
-			.pipe(ngAnnotate())
-	  	.pipe(uglify())
+			// .pipe(ngAnnotate())
+		//  	.pipe(uglify())
 	    .pipe(gulp.dest('./dist'));
 });
 

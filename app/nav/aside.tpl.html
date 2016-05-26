@@ -1,13 +1,20 @@
+<div class="modal-header">
+    <ul>
+        <li ng-repeat="project in vm.vm.projects | limitTo: 4">
+            <a ui-sref="app.catalog({projectId: project.id})" ng-click="vm.hide()">{{project.name}}</a>
+        </li>
+    </ul>
+</div>
 <div class="modal-body">
   <ul>
       <li>
-          <a ui-sref="app.home" ng-click="vm.hide()">Home</a>
+          <a ui-sref="app.home" ng-click="vm.hide()">O nas</a>
       </li>
       <li>
-          <a ui-sref="app.contact" ng-click="vm.hide()">Contact</a>
+          <a ui-sref="app.catalog" ng-click="vm.hide()">Szpejowa Kolekcja</a>
       </li>
       <li>
-          <a ui-sref="app.catalog" ng-click="vm.hide()">Catalog</a>
+          <a ui-sref="app.contact" ng-click="vm.hide()">Kontakt</a>
       </li>
   </ul>
 </div>

@@ -5,3 +5,16 @@
     right: 15px;
     right: 15px;
 }
+
+
+.modal-dialog, .modal-content {
+    min-width: 75vw;
+    background: red;
+    text-align: right;
+
+    a {
+        display: block;
+        height: 35px;
+        padding: 10px;
+    }
+}

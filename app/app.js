@@ -8,7 +8,8 @@ angular.module('szpeje', [
   'szpeje.contact',
   'szpeje.nav',
   'ui.bootstrap',
-  'ngAside'
+  'ngAside',
+  'ngAnimate'
 ])
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', function($urlRouterProvider, $stateProvider, $locationProvider) {
 
