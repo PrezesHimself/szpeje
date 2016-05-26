@@ -18,7 +18,7 @@
                 templateUrl: 'tpl/nav/aside.tpl.html',
                 controller: 'MenuController',
                 placement: 'right',
-                size: 'lg',
+                size: 'sm',
                 backdrop: true,
                 bindToController: true,
                 controllerAs: 'vm',
