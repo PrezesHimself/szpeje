@@ -14,7 +14,7 @@ angular.module('szpeje', [
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', function($urlRouterProvider, $stateProvider, $locationProvider) {
 
       $urlRouterProvider
-        .otherwise('app/home');
+        .otherwise('home');
 
       $stateProvider.state('app', {
           abstract: true,

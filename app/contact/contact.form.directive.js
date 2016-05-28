@@ -24,7 +24,24 @@
     function ContactFormController(SendGrid) {
         var vm = this;
         vm.sendMail = sendMail;
+        vm.postSzpeje = postSzpeje;
+        vm.szpeje = szpeje;
         vm.sending = false;
+
+        function szpeje() {
+            SendGrid.szpeje()
+            .then(function(result) {
+                console.log(result, 'result');
+                vm.szpeje = result.data;
+            });
+        }
+        function postSzpeje() {
+            SendGrid.postSzpeje()
+            .then(function(result) {
+                console.log(result, 'result');
+                vm.szpeje = result.data;
+            });
+        }
         function sendMail() {
             vm.sending = true;
             SendGrid.send(

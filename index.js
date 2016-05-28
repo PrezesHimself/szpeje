@@ -9,7 +9,7 @@ var sendgrid  = require('sendgrid')(apiKey);
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://szpeje:szpeje@ds019033.mlab.com:19033/heroku_ck1rxl0k');
+mongoose.connect(process.env.MONGODB_CONNECT);
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -28,7 +28,6 @@ app.use(function(req, res, next) {
 app.set('port', (process.env.PORT || 5000));
 app.use(compression());
 app.use('/app', express.static(root));
-app.use(fallback('index.html', { root: root }));
 
 app.post('/api/email', function(req, res) {
     var POST = req.body;
@@ -48,6 +47,41 @@ app.post('/api/email', function(req, res) {
 
 });
 
+
+// define model =================
+var Szpej = mongoose.model('Szpej', {
+    text : String,
+    done: Boolean
+});
+
+
+// get szpeje
+app.get('/api/szpeje', function(req, res) {
+    Szpej.find(function(err, todos) {
+        if (err)
+            res.send(err)
+        res.json(todos);
+    });
+});
+
+app.post('/api/szpeje', function(req, res) {
+
+    Szpej.create({
+        text : 'test',
+        done : false
+    }, function(err, todo) {
+        if (err) {
+            res.send(err);
+        }
+        Szpej.find(function(err, todos) {
+            if (err)
+                res.send(err)
+                res.json(todos);
+        });
+    });
+});
+
+app.use(fallback('index.html', { root: root }));
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
