@@ -22,16 +22,24 @@
     ContactFormController.$inject = ['SendGrid'];
 
     function ContactFormController(SendGrid) {
-        var _self = this;
-        this.sendMail = sendMail;
-
+        var vm = this;
+        vm.sendMail = sendMail;
+        vm.sending = false;
         function sendMail() {
-
+            vm.sending = true;
             SendGrid.send(
-                _self.subject,
-                _self.msg,
-                _self.email
-            );
+                vm.from,
+                vm.subject,
+                vm.msg
+            )
+            .then(function() {
+                vm.sending = false;
+                vm.message = 'dziękoweczka';
+            })
+            .catch(function(){
+                vm.sending = false;
+                vm.message = 'nie poszedł mail';
+            })
 
         }
     }

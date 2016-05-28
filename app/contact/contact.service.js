@@ -15,7 +15,7 @@
            send: function(from, subject, msg) {
                var method = 'POST';
                var url = "/api/email";
-               $http.post(url, {
+               return $http.post(url, {
                    from: from,
                    subject: subject,
                    msg: msg

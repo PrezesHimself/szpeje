@@ -1,5 +1,5 @@
 <p>
-    <input type="text" name="email" value="" ng-model="vm.email" placeholder="email">
+    <input type="text" name="email" value="" ng-model="vm.from" placeholder="email">
 </p>
 
 <p>
@@ -16,4 +16,6 @@
 <p>
 
     <button type="button" name="button" ng-click="vm.sendMail()">send mail</button>
+    <span ng-if="vm.sending"> Wysyłeczka </span>
+    <span ng-if="!vm.sending"> {{vm.message}}</span>
 </p>

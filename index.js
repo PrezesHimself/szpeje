@@ -29,18 +29,20 @@ app.use(fallback('index.html', { root: root }));
 
 app.post('/api/email', function(req, res) {
     var POST = req.body;
-
+    console.log(POST);
     sendgrid.send({
       to:       'mateuszrorat@gmail.com',
       from:     POST.from,
       subject:  POST.subject,
       text:     POST.msg
     }, function(err, json) {
-      if (err) { return console.error(err); }
-      console.log(json);
+      if (err) {
+          res.status(500).send('Something broke!');
+          return console.error(err);
+      }
+      res.send('ok\n');
     });
-    
-    res.send('ok\n');
+
 });
 
 app.listen(app.get('port'), function() {
