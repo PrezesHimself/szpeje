@@ -4,9 +4,12 @@ var compression = require('compression');
 var fallback = require('express-history-api-fallback');
 var root = __dirname + '/dist';
 var auth = require('basic-auth');
-var apiKey = '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';
+var apiKey = process.env.SENDGRID_APIKEY;
 var sendgrid  = require('sendgrid')(apiKey);
 var bodyParser = require('body-parser')
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://szpeje:szpeje@ds019033.mlab.com:19033/heroku_ck1rxl0k');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
