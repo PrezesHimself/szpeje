@@ -6,8 +6,8 @@
     .config(function($stateProvider) {
         $stateProvider
             .state('app.contact', {
-                url: 'contact',
-                templateUrl: 'tpl/contact/contact.tpl.html',
+                url: 'app/contact',
+                templateUrl: 'app/tpl/contact/contact.tpl.html',
                 controller: 'ContactController',
                 controllerAs: 'vm'
             });

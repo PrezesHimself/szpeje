@@ -1,7 +1,7 @@
 <p>
   <div
     data-ng-repeat="project in vm.projects"
-    nf-if="vm.projects"
+    ng-if="vm.projects"
     class="projects">
        <a ui-sref="app.catalog({projectId: project.id})">
          <h5>{{ project.name }}</h5>
@@ -12,10 +12,17 @@
    </div>
 
    <div class="project"
-   nf-if="vm.project">
-      <h2>{{vm.project.name}}</h2>
+   ng-if="vm.project">
+      <div class="project-cover"
+        style="background-image: url({{vm.project.covers['original']}})">
+          <h2>{{vm.project.name}}</h2>
+          <p>
+              {{vm.project.description}}
+          </p>
+      </div>
       <div
-        data-ng-repeat="module in vm.project.modules">
+        data-ng-repeat="module in vm.project.modules"
+        ng-click="vm.openImage()">
           <img src="{{ module.src }}"/>
       </div>
    </div>

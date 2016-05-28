@@ -7,6 +7,7 @@ var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var ngAnnotate = require('gulp-ng-annotate');
 var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('default', ['browser-sync'], function () {
 });
@@ -16,13 +17,13 @@ gulp.task('build', ['js', 'sass', 'html', 'images'], function () {
 
 gulp.task('js', function () {
 		return gulp.src([
-				'./bower_components/angular/angular.js',
-				'./bower_components/angular-animate/angular-animate.js',
-				'./bower_components/angular-ui-router/release/angular-ui-router.js',
-				'./bower_components/angular-aside/dist/js/angular-aside.js',
-				'./bower_components/angular-bootstrap/ui-bootstrap.js',
-				'./bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-				'./app/**/*.js'
+			'./bower_components/angular/angular.js',
+			'./bower_components/angular-animate/angular-animate.js',
+			'./bower_components/angular-ui-router/release/angular-ui-router.js',
+			'./bower_components/angular-aside/dist/js/angular-aside.js',
+			'./bower_components/angular-bootstrap/ui-bootstrap.js',
+			'./bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+			'./app/**/*.js'
 		])
 	  	.pipe(concat('szpeje.js'))
 			// .pipe(ngAnnotate())
@@ -33,6 +34,10 @@ gulp.task('js', function () {
 gulp.task('sass', function () {
   return gulp.src('./app/szpeje.scss')
     .pipe(sass().on('error', sass.logError))
+	.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
     .pipe(gulp.dest('./dist'));
 });
 

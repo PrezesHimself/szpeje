@@ -14,7 +14,7 @@ angular.module('szpeje.catalog')
                 promise = $http.jsonp(url).error(function (response, status) {
                     alert(status);
                 });
-                
+
                 return promise;
             }
 

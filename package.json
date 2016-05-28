@@ -12,19 +12,23 @@
   },
   "dependencies": {
     "basic-auth": "^1.0.4",
+    "body-parser": "^1.15.1",
     "bower": "^1.7.9",
+    "bower-requirejs": "^1.2.0",
     "browser-sync": "^2.12.8",
     "compression": "^1.6.2",
     "ejs": "2.4.1",
     "express": "4.13.3",
     "express-history-api-fallback": "^2.0.0",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-ng-annotate": "^2.0.0",
     "gulp-nodemon": "^2.0.7",
     "gulp-sass": "^2.3.1",
     "gulp-uglify": "^1.5.3",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "sendgrid": "^2.0.0"
   },
   "repository": {
     "type": "git",
@@ -36,5 +40,7 @@
     "express"
   ],
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp-browserify": "^0.5.1"
+  }
 }

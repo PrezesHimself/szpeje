@@ -15,11 +15,12 @@
 
         function toggleMenu() {
           var asideInstance = $aside.open({
-                templateUrl: 'tpl/nav/aside.tpl.html',
+                templateUrl: 'app/tpl/nav/aside.tpl.html',
                 controller: 'MenuController',
                 placement: 'right',
                 size: 'lg',
                 backdrop: true,
+                openedClass: 'modal-open menu',
                 bindToController: true,
                 controllerAs: 'vm',
                 resolve: {
