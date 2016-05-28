@@ -25,6 +25,9 @@
         ng-click="vm.openImage()">
           <img src="{{ module.src }}"/>
       </div>
+      <div class="contact-form">
+          <szpeje-contact-form subject="vm.project.name"></szpeje-contact-form>
+      </div>
    </div>
    <div class="no-projects" ng-if="!vm.projects && !vm.project">
      loading...

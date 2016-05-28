@@ -16,9 +16,9 @@
                var method = 'POST';
                var url = "/api/email";
                $http.post(url, {
-                   from: 'test',
-                   subject: 'subject',
-                   msg: 'msg'
+                   from: from,
+                   subject: subject,
+                   msg: msg
                }).
                success(function(data, status) {}).
                error(function(data, status) {});
