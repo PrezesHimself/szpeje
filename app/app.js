@@ -26,7 +26,4 @@ angular.module('szpeje', [
 
       $locationProvider.html5Mode(true);
 
-    }])
-    .run(function(){
-      console.log('running angular',angular.version.full);
-    });
+  }]);
