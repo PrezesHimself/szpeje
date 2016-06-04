@@ -1,1 +1,10 @@
-admin
+<button type="button" name="button" ng-click='vm.synchronize()'>sync</button>
+
+<button type="button" name="button" ng-click='vm.save()' ng-if="vm.projects">save</button>
+
+<div ng-repeat="project in vm.projects" style="margin-bottom: 50px;" ng-if="vm.projects">
+    <h2>{{::project.name}}</h2>
+    <div ng-repeat="(key, value) in project">
+        {{key}} - <input type="text" name="{{::key}}" ng-model="value">
+    </div>
+</div>
