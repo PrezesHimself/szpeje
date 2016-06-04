@@ -2,12 +2,12 @@
 
 (function() {
 
-    function NavController($aside, SzpejeService) {
+    function NavController($aside, BehanceApi) {
         var _self = this;
 
         this.toggleMenu = toggleMenu;
 
-        SzpejeService.getSzpeje()
+        BehanceApi.getSzpeje()
           .then(function(results){
             console.log(results);
             _self.projects = results.data.projects;
@@ -32,7 +32,7 @@
         }
     }
 
-    NavController.$inject = ['$aside', 'SzpejeService']
+    NavController.$inject = ['$aside', 'BehanceApi']
 
     angular.module('szpeje.nav')
         .controller('NavController', NavController);

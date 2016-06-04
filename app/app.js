@@ -7,6 +7,8 @@ angular.module('szpeje', [
   'szpeje.catalog',
   'szpeje.contact',
   'szpeje.nav',
+  'szpeje.admin',
+  'szpeje.behanceApi',
   'ui.bootstrap',
   'ngAside',
   'ngAnimate'

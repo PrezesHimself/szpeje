@@ -1,10 +1,10 @@
-angular.module('szpeje.catalog')
-    .service('SzpejeService', ['$http', '$cacheFactory', '$q', function ($http, $cacheFactory, $q) {
+angular.module('szpeje.behanceApi', [])
+    .service('BehanceApi', ['$http', '$cacheFactory', '$q', function ($http, $cacheFactory, $q) {
 
         var _self = this;
 
 
-        var user = 'DelikatesyProjektowe';
+        var user = 'szpeje';
         var apiKey = 'ONmbhVbzOEFvhmBHVfkOZfqLN4SX8FIz';
 
         var cache = $cacheFactory('dataCache');
