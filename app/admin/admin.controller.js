@@ -2,7 +2,7 @@
 
 (function() {
 
-    function AdminController($q, BehanceApi) {
+    function AdminController($q, BehanceApi, SzpejeApi) {
         var vm = this;
 
         vm.synchronize = synchronize;
@@ -12,7 +12,12 @@
             BehanceApi.getSzpeje()
                 .then(function(results) {
                     vm.projects = results.data.projects;
+                    SzpejeApi.deleteSzpeje();
                 });
+        }
+
+        function clearSzpejeCollection() {
+            BehanceApi.deleteSzpeje();
         }
 
         function save() {
@@ -21,7 +26,7 @@
 
     }
 
-    AdminController.$inject = ['$q', 'BehanceApi']
+    AdminController.$inject = ['$q', 'BehanceApi', 'SzpejeApi']
 
     angular.module('szpeje.admin')
         .controller('AdminController', AdminController);

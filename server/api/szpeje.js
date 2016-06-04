@@ -16,6 +16,16 @@ app.get('/api/szpeje', function(req, res) {
     });
 });
 
+// remove szpeje
+app.delete('/api/szpeje', function(req, res) {
+    Szpej.remove({}, function(err, todos) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(todos);
+    });
+});
+
 app.post('/api/szpeje', function(req, res) {
 
     Szpej.create({

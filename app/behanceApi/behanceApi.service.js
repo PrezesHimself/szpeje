@@ -15,6 +15,7 @@ angular.module('szpeje.behanceApi', [])
 
             return promise;
         }
+        
         this.getProject = function(projectId) {
             var url = 'http://behance.net/v2/projects/'+ projectId +'?api_key='+ apiKey +'&callback=JSON_CALLBACK';
             promise = $http.jsonp(url).error(function (response, status) {
