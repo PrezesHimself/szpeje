@@ -1,0 +1,99 @@
+szpeje-loader {
+   position: fixed;
+   pointer-events: none;
+   background: rgba(255,255,255,.8);
+   z-index: 10000000;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   &.ng-enter, &.ng-leave {
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    }
+
+    &.ng-enter,
+    &.ng-leave.ng-leave-active {
+      opacity:0;
+    }
+
+    &.ng-leave,
+    &.ng-enter.ng-enter-active {
+      opacity:1;
+    }
+}
+
+$base-line-height: 48px;
+$white: rgb(0,0,0);
+$off-white: rgba($white, 0.2);
+$spin-duration: 1s;
+$pulse-duration: 750ms;
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    background: $white;
+  }
+}
+
+html {
+  height: 100%;
+}
+body {
+  @extend html;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #333333;
+}
+
+.loading {
+    border-radius: 50%;
+    width: $base-line-height;
+    height: $base-line-height;
+    border: .25rem solid $off-white;
+    border-top-color: $white;
+    animation: spin $spin-duration infinite linear;
+  &--double {
+    border-style: double;
+    border-width: .5rem;
+  }
+}
+
+.loading-pulse {
+  position: relative;
+  width: ($base-line-height / 4);
+  height: $base-line-height;
+  background: $off-white;
+  animation: pulse $pulse-duration infinite;
+  animation-delay: ($pulse-duration / 3);
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: ($base-line-height / 1.5);
+    width: ($base-line-height / 4);
+    background: $off-white;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: pulse $pulse-duration infinite;
+  }
+  &:before {
+    left: -($base-line-height / 2);
+  }
+  &:after {
+    left: ($base-line-height / 2);
+    animation-delay: ($pulse-duration / 1.5);
+  }
+}

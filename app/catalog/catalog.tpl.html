@@ -28,7 +28,5 @@
             </p>
         </div>
    </div>
-   <div class="no-projects" ng-if="!vm.projects && !vm.szpeje">
-     loading...
-   </div>
+   <szpeje-loader ng-if="!vm.szpeje && !vm.projects"></szpeje-loader>
 </p>

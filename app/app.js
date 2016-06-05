@@ -7,6 +7,7 @@ angular.module('szpeje', [
   'szpeje.catalog',
   'szpeje.contact',
   'szpeje.nav',
+  'szpeje.loader',
   'szpeje.szpejeApi',
   'szpeje.admin',
   'szpeje.behanceApi',
