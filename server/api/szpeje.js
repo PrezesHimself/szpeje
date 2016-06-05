@@ -3,9 +3,12 @@ var mongoose = require('mongoose');
 
 // define model =================
 var Szpej = mongoose.model('Szpej', {
-    name : String,
-    url: String,
-    id: String
+    src : String,
+    id : String,
+    categoryId : String,
+    categoryName : String,
+    caption_plain: String,
+    json: String
 });
 
 

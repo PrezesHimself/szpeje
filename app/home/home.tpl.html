@@ -8,15 +8,15 @@
 
 <div class="szp-itemlist">
 
-      <div class="szp-itemlist__item" ng-repeat="a in [1,2,3,4,5,6,7,8]">
-        <div class="szp-itemlist__photo">
+      <div class="szp-itemlist__item" ng-repeat="szpeja in vm.szpeje">
+        <div class="szp-itemlist__photo" style="background-image: url('{{szpeja.json.src}}')">
 
         </div>
         <p class="szp-itemlist__info">
-            Dizajnerski produkt z lat 60.
+            {{szpeja.json.caption_plain}}
         </p>
         <p class="szp-itemlist__price">
-            250PLN
+            {{szpeja.json.price}}
         </p>
       </div>
 </div>

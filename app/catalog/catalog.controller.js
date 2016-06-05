@@ -2,20 +2,29 @@
 
 (function() {
 
-    function CatalogController(BehanceApi, $stateParams, $uibModal) {
-        var _self = this;
+    function CatalogController(SzpejeApi, $stateParams, $uibModal) {
+        var vm = this;
 
         this.openImage = openImage;
 
         if (!$stateParams.projectId) {
-          BehanceApi.getSzpeje()
+          SzpejeApi.getSzpeje()
             .then(function(results) {
-              _self.projects = results.data.projects;
+              vm.projects = results;
             })
         } else {
-          BehanceApi.getProject($stateParams.projectId)
+          SzpejeApi.getSzpeje()
             .then(function(results)  {
-              _self.project = results.data.project;
+              console.log(results);
+              vm.szpeje = _.chain(results.data)
+                          .map(function(item) {
+                              item.json = JSON.parse(item.json);
+                              return item;
+                          })
+                          .filter(function(item) {
+                              return item.categoryId == $stateParams.projectId
+                          })
+                          .value();
             })
         }
         function openImage(imageUrl) {
@@ -31,7 +40,7 @@
         }
     }
 
-    CatalogController.$inject = ['BehanceApi', '$stateParams', '$uibModal']
+    CatalogController.$inject = ['SzpejeApi', '$stateParams', '$uibModal']
 
     angular.module('szpeje.catalog')
         .controller('CatalogController', CatalogController);

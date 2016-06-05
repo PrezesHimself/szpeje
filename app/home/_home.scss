@@ -17,6 +17,8 @@
     &__photo {
       background: #eaeaea;
       min-height: 150px;
+      background: #eaeaea left top no-repeat;
+      background-size: cover;
     }
     &__price {
         font-size:   10px;

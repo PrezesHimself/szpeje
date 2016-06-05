@@ -3,15 +3,13 @@
 (function() {
 
     function MenuController($scope, $uibModalInstance) {
-        var _self = this;
+        var vm = this;
 
         this.hide = hide;
 
         function hide() {
           $uibModalInstance.close();
         };
-
-        console.log(_self);
 
     }
 

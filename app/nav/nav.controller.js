@@ -2,16 +2,14 @@
 
 (function() {
 
-    function NavController($aside, SzpejeApi) {
-        var _self = this;
+    function NavController($aside, $rootScope, SzpejeApi) {
+        var vm = this;
 
         this.toggleMenu = toggleMenu;
 
-        SzpejeApi.getSzpeje()
-          .then(function(results){
-            console.log(results);
-            _self.projects = results.data;
-          })
+        getSzpeje();
+
+        $rootScope.$on('szpeje-saved', getSzpeje);
 
         function toggleMenu() {
           var asideInstance = $aside.open({
@@ -25,14 +23,29 @@
                 controllerAs: 'vm',
                 resolve: {
                       projects: function() {
-                          return _self.projects;
+                          return vm.projects;
                       }
                 },
           });
         }
+
+        function getSzpeje() {
+            SzpejeApi.getSzpeje()
+              .then(function(results){
+                vm.categories = _.chain(results.data)
+                                  .groupBy('categoryId')
+                                  .map(function(item) {
+                                      return {
+                                        categoryId: item[0].categoryId,
+                                        categoryName: item[0].categoryName
+                                      }
+                                  })
+                                  .value();
+              })
+        }
     }
 
-    NavController.$inject = ['$aside', 'SzpejeApi']
+    NavController.$inject = ['$aside', '$rootScope','SzpejeApi']
 
     angular.module('szpeje.nav')
         .controller('NavController', NavController);

@@ -6,7 +6,6 @@ angular.module('szpeje.szpejeApi', [])
         this.deleteSzpeje = function() {
             var url = '/api/szpeje';
             promise = $http.delete(url).error(function (response, status) {
-                alert(status);
             });
 
             return promise;
@@ -15,16 +14,14 @@ angular.module('szpeje.szpejeApi', [])
         this.insertSzpeje = function(data) {
             var url = '/api/szpeje';
             promise = $http.post(url, data).error(function (response, status) {
-                alert(status);
             });
 
             return promise;
         };
 
-        this.getSzpeje = function() {
+        this.getSzpeje = function(search) {
             var url = '/api/szpeje';
             promise = $http.get(url).error(function (response, status) {
-                alert(status);
             });
 
             return promise;

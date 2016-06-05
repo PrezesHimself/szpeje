@@ -1,25 +1,31 @@
-<p>
-<p>
-    <input type="text" name="email" value="" ng-model="vm.from" placeholder="email">
-</p>
+<div class="szp-contactform szp-form">
+    <h4>Zapytaj/Zamow</h4>
+    <p>
+        <input
+          type="text"
+          name="email"
+          value=""
+          ng-model="vm.from"
+          placeholder="email">
+    </p>
 
-<p>
+    <p>
 
-    <input type="text" name="email" value="" ng-model="vm.subject" placeholder="subject">
-</p>
+        <input type="text" name="email" value="" ng-model="vm.subject" placeholder="subject">
+    </p>
 
 
-<p>
+    <p>
 
-    <textarea name="msg" rows="8" cols="40" ng-model="vm.msg" placeholder="msg"></textarea>
-</p>
+        <textarea name="msg" rows="8" cols="40" ng-model="vm.msg" placeholder="msg"></textarea>
+    </p>
 
-<p>
+    <p>
 
-    <button type="button" name="button" ng-click="vm.sendMail()">send mail</button>
-    <!-- <button type="button" name="button" ng-click="vm.szpeje()">szpej</button>
-    <button type="button" name="button" ng-click="vm.postSzpeje()">postSzpeje</button> -->
-    <span ng-if="vm.sending"> Wysyłeczka </span>
-    <span ng-if="!vm.sending"> {{vm.message}}</span>
-</p>
-{{vm.szpeje}}
+        <button type="button" name="button" ng-click="vm.sendMail()">send mail</button>
+        <!-- <button type="button" name="button" ng-click="vm.szpeje()">szpej</button>
+        <button type="button" name="button" ng-click="vm.postSzpeje()">postSzpeje</button> -->
+        <span ng-if="vm.sending"> Wysyłeczka </span>
+        <span ng-if="!vm.sending"> {{vm.message}}</span>
+    </p>
+</div>

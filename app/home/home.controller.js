@@ -2,11 +2,20 @@
 
 (function() {
 
-    function HomeController() {
-        var _self = this;
+    function HomeController(SzpejeApi) {
+        var vm = this;
+
+        SzpejeApi.getSzpeje()
+          .then(function(results) {
+              vm.szpeje = _.map(results.data, function(item) {
+                 item.json = JSON.parse(item.json);
+                 return item;
+              });
+          });
+
     }
 
-    HomeController.$inject = []
+    HomeController.$inject = ['SzpejeApi']
 
     angular.module('szpeje.home')
         .controller('HomeController', HomeController);

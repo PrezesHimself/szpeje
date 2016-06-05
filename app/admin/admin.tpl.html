@@ -1,18 +1,20 @@
 <button type="button" name="button" ng-click='vm.synchronize()'>sync</button>
+<button type="button" name="button" ng-click='vm.save()'>save</button>
 
-<button type="button" name="button" ng-click='vm.save()' ng-if="vm.projects">save</button>
-
-<div ng-repeat="project in vm.projects track by $index" style="margin-bottom: 50px;" ng-if="vm.projects ">
-    <h2>{{project.name}}</h2>
-    <div ng-repeat="(key, value) in project">
-        {{key}} -
-        <input type="text" name="{{::key}}" ng-model="project[key]">
-        <button
-            type="button"
-            name="button"
-            ng-click="project.setRemoteValue(key)"
-            ng-if="project.local[key] && project[key] != project.remote[key]">
-                {{project.remote[key]}}
-            </button>
+<div class="szp-adminmodules">
+    <div class="szp-module" ng-repeat="item in vm.modules track by $index">
+        <h2>{{item.categoryName}}</h2>
+        <p>
+          <img src="{{item.src}}" alt="" />
+        </p>
+        <p>
+          <textarea name="name" rows="8" cols="40" ng-model="item.caption_plain"></textarea>
+        </p>
+        <p>
+          <label for="">price</label><input type="text" name="name" value="" ng-model="item.price">
+        </p>
+        <p>
+          <label for="">name</label><input type="text" name="name" value="" ng-model="item.name">
+        </p>
     </div>
 </div>
