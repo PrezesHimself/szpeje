@@ -1,0 +1,21 @@
+.szp-footer {
+    flex: 0 0 100px;
+    padding: 20px;
+    background: #f1f2f2;
+    text-align: center;
+
+    &__separator {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+
+    &__nav {
+      margin-top: 10px;
+    }
+
+    &__copyright {
+      font-size: 12px;
+      opacity: .7;
+      margin-top: 10px;
+    }
+}

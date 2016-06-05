@@ -17,18 +17,17 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 <div class="content">
-    <div class="nav">
-        <img src="app/assets/logo.jpg" alt="" />
+    <div class="szp-wrapper">
         <szpeje-nav></szpeje-nav>
+        <div ui-view="" class="szp-uiview"></div>
     </div>
-    <div ui-view=""></div>
-
-
-    <footer>
-        <p>
-            <a href="https://www.facebook.com/szpeje/?fref=ts">facebook</a> | <a href="http://www.pikore.com/szpeje">instagram</a>
+    <footer class="szp-footer">
+        <p class="szp-footer__nav">
+            <a href="https://www.facebook.com/szpeje/?fref=ts">FACEBOOK</a>
+            <span class="szp-footer__separator">|</span>
+            <a href="http://www.pikore.com/szpeje">INSTAGRAM</a>
         </p>
-        <p>
+        <p class="szp-footer__copyright">
             Copyright  2016
         </p>
     </footer>
