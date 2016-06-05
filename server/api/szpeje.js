@@ -1,9 +1,11 @@
 var app = require('../index.js');
 var mongoose = require('mongoose');
+
 // define model =================
 var Szpej = mongoose.model('Szpej', {
-    text : String,
-    done: Boolean
+    name : String,
+    url: String,
+    id: String
 });
 
 
@@ -27,18 +29,15 @@ app.delete('/api/szpeje', function(req, res) {
 });
 
 app.post('/api/szpeje', function(req, res) {
+    var data = [].concat(req.body);
+    console.log(data);
+    Szpej.insertMany(data, onInsert);
 
-    Szpej.create({
-        text : 'test',
-        done : false
-    }, function(err, todo) {
+    function onInsert(err, docs) {
         if (err) {
-            res.send(err);
+            // TODO: handle error
+        } else {
+            res.json(docs.length + 'szpeje were successfully stored.' );
         }
-        Szpej.find(function(err, todos) {
-            if (err)
-                res.send(err)
-                res.json(todos);
-        });
-    });
+    }
 });

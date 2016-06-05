@@ -2,9 +2,17 @@
 
 <button type="button" name="button" ng-click='vm.save()' ng-if="vm.projects">save</button>
 
-<div ng-repeat="project in vm.projects" style="margin-bottom: 50px;" ng-if="vm.projects">
-    <h2>{{::project.name}}</h2>
+<div ng-repeat="project in vm.projects track by $index" style="margin-bottom: 50px;" ng-if="vm.projects ">
+    <h2>{{project.name}}</h2>
     <div ng-repeat="(key, value) in project">
-        {{key}} - <input type="text" name="{{::key}}" ng-model="value">
+        {{key}} -
+        <input type="text" name="{{::key}}" ng-model="project[key]">
+        <button
+            type="button"
+            name="button"
+            ng-click="project.setRemoteValue(key)"
+            ng-if="project.local[key] && project[key] != project.remote[key]">
+                {{project.remote[key]}}
+            </button>
     </div>
 </div>
