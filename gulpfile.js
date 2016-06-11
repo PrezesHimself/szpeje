@@ -47,7 +47,7 @@ gulp.task('html', function () {
 	gulp.src('./app/**/*.tpl.html')
     .pipe(gulp.dest('./dist/tpl'));
 
-  return gulp.src('./app/index.html')
+  return gulp.src(['./app/index.html', './app/app.html'])
     .pipe(gulp.dest('./dist/'));
 });
 

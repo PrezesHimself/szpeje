@@ -1,6 +1,7 @@
 var express = require('express');
 var app = module.exports = express();
 var compression = require('compression');
+var path = require('path');
 var fallback = require('express-history-api-fallback');
 var root = './dist';
 // var auth = require('basic-auth');
@@ -24,11 +25,19 @@ app.use(bodyParser.json());
 
 app.set('port', (process.env.PORT || 5000));
 app.use(compression());
-app.use('/app', express.static(root));
+app.use('/webapp/app', express.static(root));
+
+app.get('/webapp', function(req, res) {
+    res.sendFile(path.resolve(root) + '/app.html');
+});
+
+app.get('/', function(req, res) {
+    res.sendFile(path.resolve(root) + '/index.html');
+});
 
 require('./api/index.js');
 
-app.use(fallback('index.html', { root: root }));
+app.use(fallback('app.html', { root: root }));
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
