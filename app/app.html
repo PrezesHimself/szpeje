@@ -18,24 +18,11 @@
   <![endif]-->
 <div class="content">
 
-
-    <div class="szp-nav" style="position: static !important">
-        <img src="app/assets/logo.jpg" alt="" class="szp-nav__logo" />
-    </div>
-
-    <p style="text-align: center; margin-top: 120px;">
-        Jeszcze się budujemy
-    </p>
-    <p class="szp-footer__nav" style="text-align: center">
-        <a href="https://www.facebook.com/szpeje/?fref=ts">FACEBOOK</a>
-        <span class="szp-footer__separator">|</span>
-        <a href="http://www.pikore.com/szpeje">INSTAGRAM</a>
-    </p>
-
+      <szpeje-nav></szpeje-nav>
     <div class="szp-wrapper">
         <div ui-view="" class="szp-uiview"></div>
     </div>
-    <!-- <footer class="szp-footer">
+    <footer class="szp-footer">
         <p class="szp-footer__nav">
             <a href="https://www.facebook.com/szpeje/?fref=ts">FACEBOOK</a>
             <span class="szp-footer__separator">|</span>
@@ -44,10 +31,11 @@
         <p class="szp-footer__copyright">
             Copyright  2016
         </p>
-    </footer> -->
+    </footer>
 </div>
 
 </script>
+<script async src="app/szpeje.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
