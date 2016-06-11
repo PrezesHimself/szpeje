@@ -1,4 +1,5 @@
 var express = require('express');
+var express = require('express');
 var app = module.exports = express();
 var compression = require('compression');
 var path = require('path');
@@ -36,6 +37,7 @@ app.get('/', function(req, res) {
 });
 
 require('./api/index.js');
+require('./auth/index.js');
 
 app.use(fallback('app.html', { root: root }));
 app.listen(app.get('port'), function() {

@@ -1,38 +1,47 @@
-<button type="button" name="button" ng-click='vm.synchronize()'>sync</button>
-<button type="button" name="button" ng-click='vm.save()'>save</button>
-
-<div class="szp-admin__list">
-    <div class="szp-admin__item" ng-repeat="item in vm.categories">
-        {{item}}
-    </div>
+<div ng-if="!vm.isAuth">
+    @: <input type="text" name="name" value="" ng-model="vm.email">
+    P: <input type="password" name="name" value="" ng-model="vm.password">
+    <button type="button" name="button" ng-click='vm.login()'>login</button>
 </div>
+<div ng-if="vm.isAuth">
+    <button type="button" name="button" ng-click='vm.logout()'>logout</button>
+    <button type="button" name="button" ng-click='vm.synchronize()'>sync</button>
+    <button type="button" name="button" ng-click='vm.save()'>save</button>
 
-<div class="szp-admin__list">
-    <div class="szp-admin__item" ng-repeat="item in vm.localSzpeje">
-        <h2>{{item.name}} <> {{item.categoryId}}</h2>
-        <p>
-          <img src="{{item.covers['115']}}" alt="" />
-        </p>
-        <p>
-          <textarea name="name" rows="8" cols="40" ng-model="item.description"></textarea>
-        </p>
-        <p>
-          <label for="">price</label><input type="text" name="name" value="" ng-model="item.price">
-        </p>
-        <p>
-          <label for="">name</label><input type="text" name="name" value="" ng-model="item.name">
-        </p>
-        <p>
-          <label for="">available</label><input type="checkbox" name="name" value="" ng-model="item.available">
-        </p>
-        <p>
-            <select
-                class=""
-                name=""
-                ng-options="item.id as item.name for item in vm.categories"
-                ng-model="item.categoryId">
+    <div class="szp-admin__list">
+    <div class="szp-admin__list">
+        <div class="szp-admin__item" ng-repeat="item in vm.categories">
+            {{item}}
+        </div>
+    </div>
 
-            </select>
-        </p>
+    <div class="szp-admin__list">
+        <div class="szp-admin__item" ng-repeat="item in vm.localSzpeje">
+            <h2>{{item.name}} <> {{item.categoryId}}</h2>
+            <p>
+              <img src="{{item.covers['115']}}" alt="" />
+            </p>
+            <p>
+              <textarea name="name" rows="8" cols="40" ng-model="item.description"></textarea>
+            </p>
+            <p>
+              <label for="">price</label><input type="text" name="name" value="" ng-model="item.price">
+            </p>
+            <p>
+              <label for="">name</label><input type="text" name="name" value="" ng-model="item.name">
+            </p>
+            <p>
+              <label for="">available</label><input type="checkbox" name="name" value="" ng-model="item.available">
+            </p>
+            <p>
+                <select
+                    class=""
+                    name=""
+                    ng-options="item.id as item.name for item in vm.categories"
+                    ng-model="item.categoryId">
+
+                </select>
+            </p>
+        </div>
     </div>
 </div>

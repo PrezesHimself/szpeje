@@ -2,13 +2,39 @@
 
 (function() {
 
-    function AdminController($q, $rootScope, BehanceApi, SzpejeApi) {
+    function AdminController($q, $rootScope, BehanceApi, SzpejeApi, $auth) {
         var vm = this;
 
         vm.synchronize = synchronize;
         vm.save = save;
-
+        console.log($auth);
         init();
+
+        vm.isAuth = $auth.isAuthenticated();
+        vm.authenticate = function(provider) {
+              vm.auth = $auth.authenticate(provider)
+                  .then(function(response) {
+                  vm.isAuth = $auth.isAuthenticated();
+              });
+        };
+
+        vm.login = function() {
+            $auth.login({
+                email: vm.email,
+                password: vm.password
+            })
+            .then(function(response) {
+              vm.isAuth = $auth.isAuthenticated();
+            })
+        };
+
+        vm.logout = function() {
+            $auth.logout()
+                .then(function(response) {
+                    vm.isAuth = $auth.isAuthenticated();
+              });
+        };
+
 
         function init() {
             SzpejeApi.getSzpeje()
@@ -77,7 +103,7 @@
 
     }
 
-    AdminController.$inject = ['$q', '$rootScope', 'BehanceApi', 'SzpejeApi']
+    AdminController.$inject = ['$q', '$rootScope', 'BehanceApi', 'SzpejeApi', '$auth']
 
     angular.module('szpeje.admin')
         .controller('AdminController', AdminController);

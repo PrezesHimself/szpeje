@@ -13,10 +13,15 @@ angular.module('szpeje', [
   'szpeje.behanceApi',
   'ui.bootstrap',
   'ngAside',
-  'ngAnimate'
+  'ngAnimate',
+  'satellizer'
 ])
-.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', function($urlRouterProvider, $stateProvider, $locationProvider) {
+.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$authProvider',
+    function($urlRouterProvider, $stateProvider, $locationProvider, $authProvider) {
 
+        $authProvider.facebook({
+            clientId: '1731331900440243'
+        });
       $urlRouterProvider
         .otherwise('home');
 

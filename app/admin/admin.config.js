@@ -12,22 +12,5 @@
                 controllerAs: 'vm'
             });
     });
-//    .run(function($rootScope) {
-      // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-      //     console.log(toState);
-      //     if (toState.name === 'app.admin') {
-      //        event.preventDefault();
-      //        Profile.authCheck().then(function(returned) {
-      //          if (returned.status === 200) {
-      //            console.log("yes!");
-      //            console.log(toState.name);
-      //            //$state.go($state);
-      //          } else {
-      //            $state.go('auth');
-      //          }
-      //        });
-      //     }
-      //  });
-    // });
 
 }());
