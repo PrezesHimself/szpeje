@@ -7,9 +7,9 @@
 
         this.toggleMenu = toggleMenu;
 
-        getSzpeje();
+        getCategories();
 
-        $rootScope.$on('szpeje-saved', getSzpeje);
+        $rootScope.$on('szpeje-saved', getCategories);
 
         function toggleMenu() {
           var asideInstance = $aside.open({
@@ -29,19 +29,8 @@
           });
         }
 
-        function getSzpeje() {
-            SzpejeApi.getSzpeje()
-              .then(function(results){
-                vm.categories = _.chain(results.data)
-                                  .groupBy('categoryId')
-                                  .map(function(item) {
-                                      return {
-                                        categoryId: item[0].categoryId,
-                                        categoryName: item[0].categoryName
-                                      }
-                                  })
-                                  .value();
-              })
+        function getCategories() {
+            vm.categories = SzpejeApi.getCategories();
         }
     }
 

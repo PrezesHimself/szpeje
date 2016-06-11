@@ -1,7 +1,8 @@
 <div class="modal-header">
     <ul>
+        {{vm.categories}}
         <li ng-repeat="category in vm.vm.categories | limitTo: 4">
-            <a ui-sref="app.catalog({projectId: category.categoryId})" ng-click="vm.hide()">{{category.categoryName}}</a>
+            <a ui-sref="app.catalog({projectId: category.id})" ng-click="vm.hide()">{{category.name}}</a>
         </li>
     </ul>
 </div>

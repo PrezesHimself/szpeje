@@ -15,16 +15,16 @@
    ng-if="vm.szpeje">
         <div class="" ng-repeat="szpej in vm.szpeje">
             <p>
-              <h2>{{szpej.json.name}}</h2>
+              <h2>{{szpej.name}}</h2>
             </p>
             <p>
-              <img src="{{szpej.json.src}}" alt="" />
+              <img src="{{szpej.covers['202']}}" alt="" />
             </p>
             <p>
-              {{szpej.json.caption_plain}}
+              {{szpej.description}}
             </p>
             <p>
-              {{szpej.json.price}}
+              {{szpej.price}}
             </p>
         </div>
    </div>

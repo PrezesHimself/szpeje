@@ -27,4 +27,20 @@ angular.module('szpeje.szpejeApi', [])
             return promise;
         };
 
+        this.getSzpejeByCategoryId = function(categoryId) {
+            var url = '/api/szpeje?categoryId='+categoryId;
+            console.log(url, 'test');
+            promise = $http.get(url).error(function (response, status) {
+            });
+
+            return promise;
+        };
+
+        this.getCategories = function() {
+            return [
+                {id: 1, name: 'Meble'},
+                {id: 2, name: 'Szpeje'}
+            ];
+        }
+
     }]);

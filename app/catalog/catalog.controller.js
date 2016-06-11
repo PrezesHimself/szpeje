@@ -13,18 +13,13 @@
               vm.projects = results;
             })
         } else {
-          SzpejeApi.getSzpeje()
+          SzpejeApi.getSzpejeByCategoryId($stateParams.projectId)
             .then(function(results)  {
-              console.log(results);
-              vm.szpeje = _.chain(results.data)
-                          .map(function(item) {
-                              item.json = JSON.parse(item.json);
-                              return item;
-                          })
-                          .filter(function(item) {
-                              return item.categoryId == $stateParams.projectId
-                          })
-                          .value();
+                console.log(results, 'res');
+                  vm.szpeje = _.map(results.data, function(item) {
+                      return JSON.parse(item.json);
+                  });
+                  console.log(vm.szpeje);
             })
         }
         function openImage(imageUrl) {

@@ -8,44 +8,42 @@
         vm.synchronize = synchronize;
         vm.save = save;
 
+        init();
+
+        function init() {
+            SzpejeApi.getSzpeje()
+              .then(function(results) {
+                  results.data = _.map(results.data, function(item) {
+                      return JSON.parse(item.json);
+                  });
+                  vm.localSzpeje = results.data;
+                  console.log(vm.localSzpeje);
+            });
+
+            vm.categories = SzpejeApi.getCategories();
+        };
 
         function synchronize() {
             BehanceApi.getSzpeje()
               .then(function(results) {
-                  var projectIds = [];
                   var promises = [];
-
+                  var remoteSzpeje = [];
                   _.each(results.data.projects, function(item) {
-                      projectIds.push(item.id);
                       promises.push(BehanceApi.getProject(item.id));
                   });
-                  $q.all([SzpejeApi.getSzpeje()].concat(promises))
-                    .then(function(results) {
-                        var modules = angular.copy(results);
-                        var categoryId, categoryName;
-                        modules.shift();
-                        modules = _.chain(modules)
-                          .map(function(item) {
-                              categoryId = item.data.project.id
-                              categoryName = item.data.project.name
-                              return _.map(item.data.project.modules, function(item) {
-                                  if(results[0].data.length) {
-                                      var local = _.find(results[0].data, function(l) {
-                                        return l.id == item.id;
-                                      });
-                                        item = _.extend(JSON.parse(local.json));
-                                  }
-                                  item.categoryId = categoryId;
-                                  item.categoryName = categoryName;
+                  $q.all(promises)
+                    .then(function(szpeje) {
+                            _.each(szpeje, function(item) {
+                                console.log(item);
+                                remoteSzpeje.push(item.data.project);
+                            });
+                         vm.remoteSzpeje = remoteSzpeje;
+                         _.each(vm.remoteSzpeje, function(remoteSzpej) {
+                             if(!_.some(vm.localSzpeje, {id: remoteSzpej.id})) {
+                                 vm.localSzpeje.push(remoteSzpej);
+                             }
 
-                                  console.log(item);
-                                  return item;
-                              });
-                          })
-                          .flatten()
-                          .value();
-                          console.log(modules);
-                        vm.modules = modules;
+                         })
                     });
               });
 
@@ -58,13 +56,14 @@
         function save() {
             SzpejeApi.deleteSzpeje()
                 .then(function(){
-                    var payload = _.map(vm.modules, function(item) {
+                    var payload = _.map(vm.localSzpeje, function(item) {
                         return {
                             src : item.src,
                             id : item.id,
                             categoryId : item.categoryId,
                             categoryName : item.categoryName,
                             caption_plain: item.caption_plain,
+                            available: item.available,
                             json: JSON.stringify(item)
                         };
                     });

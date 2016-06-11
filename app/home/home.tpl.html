@@ -11,14 +11,14 @@
 <div class="szp-itemlist">
 
       <div class="szp-itemlist__item" ng-repeat="szpeja in vm.szpeje">
-        <div class="szp-itemlist__photo" style="background-image: url('{{szpeja.json.src}}')">
+        <div class="szp-itemlist__photo" style="background-image: url('{{szpeja.covers['115']}}')">
 
         </div>
         <p class="szp-itemlist__info">
-            {{szpeja.json.caption_plain}}
+            {{szpeja.description}}
         </p>
         <p class="szp-itemlist__price">
-            {{szpeja.json.price}}
+            {{szpeja.price}}
         </p>
       </div>
 </div>

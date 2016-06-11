@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var Szpej = mongoose.model('Szpej', {
     src : String,
     id : String,
+    available : Boolean,
     categoryId : String,
     categoryName : String,
     caption_plain: String,
@@ -14,11 +15,23 @@ var Szpej = mongoose.model('Szpej', {
 
 // get szpeje
 app.get('/api/szpeje', function(req, res) {
-    Szpej.find(function(err, todos) {
-        if (err)
-            res.send(err)
-        res.json(todos);
-    });
+
+    var categoryId=req.query.categoryId;
+    if(categoryId) {
+        Szpej.find(
+            {categoryId: categoryId},
+            function(err, todos) {
+            if (err)
+                res.send(err)
+            res.json(todos);
+        });
+    } else {
+        Szpej.find(function(err, todos) {
+            if (err)
+                res.send(err)
+            res.json(todos);
+        });
+    }
 });
 
 // remove szpeje
@@ -33,7 +46,6 @@ app.delete('/api/szpeje', function(req, res) {
 
 app.post('/api/szpeje', function(req, res) {
     var data = [].concat(req.body);
-    console.log(data);
     Szpej.insertMany(data, onInsert);
 
     function onInsert(err, docs) {
