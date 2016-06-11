@@ -7,20 +7,25 @@
 
         this.openImage = openImage;
 
-        if (!$stateParams.projectId) {
+        if (!$stateParams.catgoryId) {
           SzpejeApi.getSzpeje()
             .then(function(results) {
               vm.projects = results;
             })
-        } else {
-          SzpejeApi.getSzpejeByCategoryId($stateParams.projectId)
+        } else if($stateParams.catgoryId){
+          SzpejeApi.getSzpejeByCategoryId($stateParams.catgoryId)
             .then(function(results)  {
-                console.log(results, 'res');
                   vm.szpeje = _.map(results.data, function(item) {
                       return JSON.parse(item.json);
                   });
-                  console.log(vm.szpeje);
-            })
+
+                  if($stateParams.itemId) {
+                      console.log('obj');
+                      vm.szpeja = _.find(vm.szpeje, {id: +$stateParams.itemId});
+                      console.log(vm.szpeja);
+                      console.log(vm.szpeje);
+                  }
+            });
         }
         function openImage(imageUrl) {
             var modalInstance = $uibModal.open({

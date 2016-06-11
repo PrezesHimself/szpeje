@@ -3,7 +3,7 @@
     data-ng-repeat="project in vm.projects"
     ng-if="vm.projects"
     class="projects">
-       <a ui-sref="app.catalog({projectId: project.id})">
+       <a ui-sref="app.catalog({catgoryId: project.id})">
          <h5>{{ project.name }}</h5>
          <img src="{{ project.covers['202'] }}"/><br>
        </a>
@@ -12,8 +12,12 @@
    </div>
 
    <div class="project"
-   ng-if="vm.szpeje">
-        <div class="" ng-repeat="szpej in vm.szpeje">
+   ng-if="vm.szpeje && !vm.szpeja">
+        <a
+            href=""
+            class=""
+            ui-sref="app.catalog({itemId: szpej.id})"
+            ng-repeat="szpej in vm.szpeje">
             <p>
               <h2>{{szpej.name}}</h2>
             </p>
@@ -26,7 +30,24 @@
             <p>
               {{szpej.price}}
             </p>
-        </div>
+        </a>
+   </div>
+
+   <div ng-if="vm.szpeja">
+       <p>
+          <h2>{{vm.szpeja.name}}</h2>
+        </p>
+        <p>
+              <div class="" ng-repeat="module in vm.szpeja.modules">
+                  <img src="{{module.src}}" alt="" />
+              </div>
+        </p>
+        <p>
+          {{vm.szpeja.description}}
+        </p>
+        <p>
+          {{vm.szpeja.price}}
+        </p>
    </div>
    <szpeje-loader ng-if="!vm.szpeje && !vm.projects"></szpeje-loader>
 </p>
