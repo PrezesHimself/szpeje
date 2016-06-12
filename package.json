@@ -11,12 +11,14 @@
     "postinstall": "./node_modules/bower/bin/bower install && gulp build"
   },
   "dependencies": {
+    "async": "^2.0.0-rc.6",
     "basic-auth": "^1.0.4",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.1",
     "bower": "^1.7.9",
     "bower-requirejs": "^1.2.0",
     "browser-sync": "^2.12.8",
+    "colors": "^1.1.2",
     "compression": "^1.6.2",
     "cors": "^2.7.1",
     "ejs": "2.4.1",
@@ -34,6 +36,7 @@
     "mongoose": "^4.4.19",
     "morgan": "^1.7.0",
     "path": "^0.12.7",
+    "request": "^2.72.0",
     "sendgrid": "^2.0.0"
   },
   "repository": {

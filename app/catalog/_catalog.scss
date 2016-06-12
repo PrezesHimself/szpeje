@@ -1,0 +1,20 @@
+
+.szp-gallery {
+    &__mainimg {
+      height: 200px;
+      width: 100%;
+      background: #ebebeb;
+    }
+
+    &__thumbs {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    &__thumb {
+      flex: 0 0 30%;
+      height: 120px;
+      background: #ebebeb;
+      background-size: cover;
+    }
+}
