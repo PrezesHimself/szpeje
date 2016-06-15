@@ -1,5 +1,5 @@
 var express = require('express');
-var config = require('./config.js');
+var config = require(process.env.NODE_ENV = 'production' ? './config.prod.js' : './config.js');
 var app = module.exports = express();
 var compression = require('compression');
 var path = require('path');
