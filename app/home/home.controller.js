@@ -7,7 +7,8 @@
 
         SzpejeApi.getSzpeje()
           .then(function(results) {
-              vm.szpeje = _.map(results.data, function(item) {  
+              vm.szpeje = _.map(results.data, function(item) {
+                  console.log(JSON.parse(item.json));
                  return JSON.parse(item.json);
               });
           });

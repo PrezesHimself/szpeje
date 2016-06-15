@@ -1,17 +1,13 @@
-<div class="szp-hero">
-    <h2>Predom Metron</h2>
-    <p class="szp-hero__paragraph">
-      zegar kominkowy
-      Polska, lata 60.
-    </p>
-</div>
-
 <szpeje-loader ng-if="!vm.szpeje"></szpeje-loader>
 
 <div class="szp-itemlist">
 
-      <div class="szp-itemlist__item" ng-repeat="szpeja in vm.szpeje">
-        <div class="szp-itemlist__photo" style="background-image: url('{{szpeja.covers['115']}}')">
+    <a
+        href=""
+        ui-sref="app.catalog({catgoryId: szpeja.categoryId, itemId: szpeja.id})"
+        class="szp-itemlist__item" ng-repeat="szpeja in vm.szpeje | orderBy: 'published_on' | limitTo:8">
+        <div class="szp-itemlist__photo"
+            style="background-image: url('{{szpeja.covers['115']}}')">
 
         </div>
         <p class="szp-itemlist__info">
@@ -20,5 +16,5 @@
         <p class="szp-itemlist__price">
             {{szpeja.price}}
         </p>
-      </div>
+    </a>
 </div>
