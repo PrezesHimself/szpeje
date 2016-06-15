@@ -1,5 +1,5 @@
 var express = require('express');
-var express = require('express');
+var config = require('./config.js');
 var app = module.exports = express();
 var compression = require('compression');
 var path = require('path');

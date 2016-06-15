@@ -3,7 +3,7 @@ node_modules
 bower_components
 npm-debug.log
 dist
-
+server/config.js
 # Local development
 *.env
 *.dev
