@@ -28,8 +28,8 @@ gulp.task('js', function () {
 			'./app/**/*.js'
 		])
 	  	.pipe(concat('szpeje.js'))
-			// .pipe(ngAnnotate())
-		//  	.pipe(uglify())
+			.pipe(ngAnnotate())
+		 	.pipe(uglify())
 	    .pipe(gulp.dest('./dist'));
 });
 
