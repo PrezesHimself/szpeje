@@ -12,7 +12,7 @@ var autoprefixer = require('gulp-autoprefixer');
 gulp.task('default', ['browser-sync'], function () {
 });
 
-gulp.task('build', ['js', 'sass', 'html', 'images'], function () {
+gulp.task('build', ['js', 'sass', 'html', 'images', 'fonts'], function () {
 });
 
 gulp.task('js', function () {
@@ -34,13 +34,18 @@ gulp.task('js', function () {
 });
 
 gulp.task('sass', function () {
-  return gulp.src('./app/szpeje.scss')
-    .pipe(sass().on('error', sass.logError))
-	.pipe(autoprefixer({
-			browsers: ['last 2 versions'],
-			cascade: false
-		}))
-    .pipe(gulp.dest('./dist'));
+	return gulp.src('./app/szpeje.scss')
+      .pipe(sass().on('error', sass.logError))
+  	.pipe(autoprefixer({
+  			browsers: ['last 2 versions'],
+  			cascade: false
+  		}))
+      .pipe(gulp.dest('./dist/css'));
+});
+
+gulp.task('fonts', function () {
+	return gulp.src('./bower_components/font-awesome/fonts/**/*')
+	    .pipe(gulp.dest('./dist/fonts'));
 });
 
 gulp.task('html', function () {
