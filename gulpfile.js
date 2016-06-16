@@ -25,11 +25,12 @@ gulp.task('js', function () {
 			'./bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
 			'./bower_components/satellizer/satellizer.js',
 			'./bower_components/lodash/dist/lodash.js',
+			'./bower_components/lodash/dist/lodash.js',
 			'./app/**/*.js'
 		])
 	  	.pipe(concat('szpeje.js'))
-			.pipe(ngAnnotate())
-		 	.pipe(uglify())
+			// .pipe(ngAnnotate())
+			// 	.pipe(uglify())
 	    .pipe(gulp.dest('./dist'));
 });
 

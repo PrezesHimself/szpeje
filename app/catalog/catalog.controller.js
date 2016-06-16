@@ -6,6 +6,7 @@
         var vm = this;
 
         this.openImage = openImage;
+        vm.slides = [];
 
         if (!$stateParams.catgoryId) {
           SzpejeApi.getSzpeje()
@@ -20,10 +21,16 @@
                   });
 
                   if($stateParams.itemId) {
-                      console.log('obj');
                       vm.szpeja = _.find(vm.szpeje, {id: +$stateParams.itemId});
-                      console.log(vm.szpeja);
-                      console.log(vm.szpeje);
+                      var currIndex = 0;
+                      _.each(vm.szpeja.modules, function(item) {
+                        console.log(item);
+                          vm.slides.push({
+                            image: item.src,
+                            text: [item.caption_plain],
+                            id: currIndex++
+                          });
+                      })
                   }
             });
         }
