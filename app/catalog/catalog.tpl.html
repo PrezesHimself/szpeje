@@ -13,47 +13,46 @@
 
    <div class="project"
    ng-if="vm.szpeje && !vm.szpeja">
-        <a
-            href=""
-            class=""
-            ui-sref="app.catalog({itemId: szpej.id})"
-            ng-repeat="szpej in vm.szpeje">
-            <p>
-              <h2>{{szpej.name}}</h2>
-            </p>
-            <p>
-              <img src="{{szpej.covers['202']}}" alt="" />
-            </p>
-            <p>
-              {{szpej.description}}
-            </p>
-            <p>
-              {{szpej.price}}
-            </p>
-        </a>
+
+       <h2>Kategoria</h2>
+       <div class="szp-itemlist">
+           <a
+               href=""
+               ui-sref="app.catalog({catgoryId: szpeja.categoryId, itemId: szpeja.id})"
+               class="szp-itemlist__item" ng-repeat="szpeja in vm.szpeje | orderBy: 'published_on' | limitTo:8">
+               <div class="szp-itemlist__photo"
+                   style="background-image: url('{{szpeja.covers['115']}}')">
+
+               </div>
+               <p class="szp-itemlist__info">
+                   {{szpeja.description}}
+               </p>
+               <p class="szp-itemlist__price">
+                   {{szpeja.price}}
+               </p>
+           </a>
+       </div>
    </div>
 
-   <div ng-if="vm.szpeja">
+   <div ng-if="vm.szpeja" class="szp-szpeja">
         <div class="szp-gallery">
-            <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-              <uib-slide ng-repeat="slide in vm.slides track by slide.id" index="slide.id">
-                <img ng-src="{{slide.image}}" style="margin:auto;">
-                <div class="carousel-caption">
-                  <h4>Slide {{slide.id}}</h4>
-                  <p>{{slide.text}}</p>
-                </div>
-              </uib-slide>
+            <uib-carousel
+                active="active"
+                template-url="app/tpl/catalog/carousel.tpl.html"
+                no-wrap="noWrapSlides">
+              <uib-slide
+                    ng-repeat="slide in vm.slides track by slide.id"
+                    index="slide.id">
+                    <img ng-src="{{slide.image}}" style="margin:auto;">
+                  </uib-slide>
             </uib-carousel>
         </div>
-        <h4>{{vm.szpeja.description}}</h4>
-        <p>
+        <h4>{{vm.szpeja.name}}</h4>
+        <p class="szp-szpeja__price">
           {{vm.szpeja.price}}
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
+            {{vm.szpeja.description}}
         </p>
         <szpeje-contact-form subject="vm.szpeja.name"></szpeje-contact-form>
 

@@ -19,12 +19,12 @@ gulp.task('js', function () {
 		return gulp.src([
 			'./bower_components/angular/angular.js',
 			'./bower_components/angular-animate/angular-animate.js',
+			'./bower_components/angular-touch/angular-touch.js',
 			'./bower_components/angular-ui-router/release/angular-ui-router.js',
 			'./bower_components/angular-aside/dist/js/angular-aside.js',
 			'./bower_components/angular-bootstrap/ui-bootstrap.js',
 			'./bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
 			'./bower_components/satellizer/satellizer.js',
-			'./bower_components/lodash/dist/lodash.js',
 			'./bower_components/lodash/dist/lodash.js',
 			'./app/**/*.js'
 		])

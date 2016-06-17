@@ -27,7 +27,7 @@
                         console.log(item);
                           vm.slides.push({
                             image: item.src,
-                            text: [item.caption_plain],
+                            text: item.caption_plain,
                             id: currIndex++
                           });
                       })

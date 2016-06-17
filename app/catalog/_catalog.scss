@@ -1,4 +1,13 @@
-
+.szp-szpeja {
+    h4 {
+        line-height: 2em;
+        font-weight: bold;
+    }
+    &__price {
+        opacity: .4;
+        line-height: 2em;
+    }
+}
 .szp-gallery {
     &__mainimg {
       height: 200px;
@@ -16,5 +25,30 @@
       height: 120px;
       background: #ebebeb;
       background-size: cover;
+    }
+
+    // bootstrap ui
+    .carousel {
+        min-height: 280px;
+        margin-bottom: 20px
+    }
+    .carousel-control {
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.left, &.right {
+            background-image: none;
+            text-shadow: none;
+            opacity: 1;
+        }
+    }
+    .carousel-indicators {
+        li {
+            border-color: black;
+        }
+        .active {
+            background: black;
+        }
     }
 }

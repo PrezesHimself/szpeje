@@ -18,6 +18,8 @@
       min-height: 100px;
       background: #eaeaea left top no-repeat;
       background-size: 100%;
+      background-repeat: no-repeat;
+      margin-bottom: 5px;
     }
     &__price {
         font-size:   10px;
@@ -25,9 +27,9 @@
     &__info {
         font-weight: bold;
         font-size:   10px;
+        text-overflow: ellipsis;
     }
     &__item {
-        min-height: 150px;
         flex: 0 0 50%;
         padding: 0 10px;
         margin-bottom: 8px;

@@ -15,7 +15,6 @@ var Szpej = mongoose.model('Szpej', {
 
 // get szpeje
 app.get('/api/szpeje', function(req, res) {
-
     var categoryId=req.query.categoryId;
     if(categoryId) {
         Szpej.find(
