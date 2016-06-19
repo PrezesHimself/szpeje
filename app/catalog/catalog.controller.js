@@ -12,19 +12,25 @@
           SzpejeApi.getSzpeje()
             .then(function(results) {
               vm.projects = results;
-            })
+            });
+
         } else if($stateParams.catgoryId){
+          vm.category = _.find(SzpejeApi.getCategories(), function(item) {
+            return item.id == $stateParams.catgoryId;
+          });
+
           SzpejeApi.getSzpejeByCategoryId($stateParams.catgoryId)
             .then(function(results)  {
-                  vm.szpeje = _.map(results.data, function(item) {
+                  var res = _.map(results.data, function(item) {
                       return JSON.parse(item.json);
                   });
-
+                  vm.szpeje = _.filter(res, function(item) {
+                      return item.price && item.available;
+                  })
                   if($stateParams.itemId) {
                       vm.szpeja = _.find(vm.szpeje, {id: +$stateParams.itemId});
                       var currIndex = 0;
                       _.each(vm.szpeja.modules, function(item) {
-                        console.log(item);
                           vm.slides.push({
                             image: item.src,
                             text: item.caption_plain,

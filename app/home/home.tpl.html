@@ -12,9 +12,9 @@
         </div>
         <p class="szp-itemlist__info">
             {{szpeja.description}}
-        </p>
-        <p class="szp-itemlist__price">
-            {{szpeja.price}}
+            <p class="szp-itemlist__price" ng-if="szpeja.price">
+                {{szpeja.price}}
+            </p>
         </p>
     </a>
 </div>

@@ -1,6 +1,20 @@
 
 <div class="szp-nav">
     <img src="app/assets/logo.jpg" alt="" class="szp-nav__logo" />
+
+    <div class="szp-nav__static-nav">
+        <ul>
+            <li ng-repeat="category in vm.categories | limitTo: 4">
+                <a ui-sref="app.catalog({catgoryId: category.id, itemId: null})" ng-click="vm.hide()">{{category.name}}</a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/szpeje/?fref=ts">FACEBOOK</a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/szpeje/">INSTAGRAM</a>
+            </li>
+        </ul>
+    </div>
 </div>
 <a
   href="#"

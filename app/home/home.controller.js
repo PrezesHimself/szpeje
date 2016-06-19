@@ -7,10 +7,12 @@
 
         SzpejeApi.getSzpeje()
           .then(function(results) {
-              vm.szpeje = _.map(results.data, function(item) {
-                  console.log(JSON.parse(item.json));
+              var res = _.map(results.data, function(item) {
                  return JSON.parse(item.json);
               });
+              vm.szpeje = _.filter(res, function(item) {
+                  return item.price && item.available;
+              })
           });
 
     }

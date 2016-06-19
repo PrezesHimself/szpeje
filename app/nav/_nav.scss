@@ -4,7 +4,9 @@
     text-align: center;
     border-bottom: 1px solid black;
     background: white;
-
+    &__static-nav {
+      display: none;
+    }
     &__navtrigger {
       i {
           z-index: 1001;
@@ -23,5 +25,30 @@
           height: 40px;
           z-index: 1000;
       }
+    }
+}
+
+@media (min-width: $break-small) {
+    .szp-nav {
+        text-align: left;
+        border-bottom: none;
+        display: flex;
+        justify-content: space-between;
+        &__static-nav {
+          display: block;
+          ul {
+            display: flex;
+            height: 100%;
+          }
+          li a{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+          }
+        }
+        &__navtrigger {
+          display: none;
+        }
     }
 }

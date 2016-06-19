@@ -14,7 +14,7 @@
    <div class="project"
    ng-if="vm.szpeje && !vm.szpeja">
 
-       <h2>Kategoria</h2>
+       <h2>{{vm.category.name}}</h2> <br/>
        <div class="szp-itemlist">
            <a
                href=""
@@ -27,8 +27,8 @@
                <p class="szp-itemlist__info">
                    {{szpeja.description}}
                </p>
-               <p class="szp-itemlist__price">
-                   {{szpeja.price}}
+               <p class="szp-itemlist__price" ng-if="szpeja.price">
+                   {{szpeja.price}} PLN
                </p>
            </a>
        </div>
@@ -48,8 +48,8 @@
             </uib-carousel>
         </div>
         <h4>{{vm.szpeja.name}}</h4>
-        <p class="szp-szpeja__price">
-          {{vm.szpeja.price}}
+        <p class="szp-szpeja__price" ng-if="vm.szpeja.price">
+          {{vm.szpeja.price}} PLN
         </p>
         <p>
             {{vm.szpeja.description}}

@@ -20,9 +20,6 @@ angular.module('szpeje', [
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$authProvider',
     function($urlRouterProvider, $stateProvider, $locationProvider, $authProvider) {
 
-        $authProvider.facebook({
-            clientId: '1731331900440243'
-        });
       $urlRouterProvider
         .otherwise('home');
 

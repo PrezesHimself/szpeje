@@ -35,3 +35,34 @@
         margin-bottom: 8px;
     }
 }
+
+
+@media (min-width: $break-small) {
+    .szp-itemlist {
+        &__item {
+            position: relative;
+            flex: 0 0 20%;
+            padding: 0 10px;
+            margin-bottom: 8px;
+            transition: opacity .4s;
+        }
+        &__info {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity .4s;
+        }
+        &__item:hover {
+            .szp-itemlist__item {
+                opacity: .2;
+            }
+            .szp-itemlist__info {
+                opacity: 1;
+            }
+        }
+    }
+}
