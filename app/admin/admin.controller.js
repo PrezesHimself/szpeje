@@ -7,7 +7,6 @@
 
         vm.synchronize = synchronize;
         vm.save = save;
-        console.log($auth);
         init();
 
         vm.isAuth = $auth.isAuthenticated();
@@ -28,6 +27,10 @@
             })
         };
 
+        vm.delete = function(id) {
+            vm.localSzpeje = _.reject(vm.localSzpeje, {id: id})
+        }
+
         vm.logout = function() {
             $auth.logout()
                 .then(function(response) {
@@ -43,7 +46,6 @@
                       return JSON.parse(item.json);
                   });
                   vm.localSzpeje = results.data;
-                  console.log(vm.localSzpeje);
             });
 
             vm.categories = SzpejeApi.getCategories();

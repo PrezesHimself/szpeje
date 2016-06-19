@@ -6,3 +6,4 @@ mongoose.connect(config.MONGODB_CONNECT);
 
 require('./mail');
 require('./szpeje');
+require('./category');
