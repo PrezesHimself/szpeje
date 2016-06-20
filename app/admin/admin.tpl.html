@@ -27,7 +27,9 @@
         <div class="szp-admin__item" ng-repeat="item in vm.localSzpeje">
             <h2>{{item.name}} <> {{item.categoryId}}</h2>
             <p>
-              <img src="{{item.covers['115']}}" alt="" />
+              <div class="" ng-repeat="module in item.modules">
+                  <img src="{{module.src}}" alt="" />
+              </div>
             </p>
             <p>
               <textarea name="name" rows="8" cols="40" ng-model="item.description"></textarea>
