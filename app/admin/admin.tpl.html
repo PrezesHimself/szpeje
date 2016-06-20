@@ -4,16 +4,24 @@
     <button type="button" name="button" ng-click='vm.login()'>login</button>
 </div>
 <div ng-if="vm.isAuth">
-    <button type="button" name="button" ng-click='vm.logout()'>logout</button>
-    <button type="button" name="button" ng-click='vm.synchronize()'>sync</button>
-    <button type="button" name="button" ng-click='vm.save()'>save</button>
-
-    <div class="szp-admin__list">
-    <div class="szp-admin__list">
-        <div class="szp-admin__item" ng-repeat="item in vm.categories">
-            {{item}}
+    <form role="form" class="form-inline">
+        <button type="button" name="button" ng-click='vm.logout()' class="btn btn-default">logout</button>
+        <button type="button" name="button" ng-click='vm.synchronize()' class="btn btn-default">sync</button>
+        <button type="button" name="button" ng-click='vm.save()' class="btn btn-primary">save</button>
+    </form>
+    <br>
+    <form role="form" class="form-inline" ng-repeat="item in vm.categories" style="margin-bottom:4px;">
+      <div class="form-group">
+        <input type="text" class="form-control" id="email" ng-model="item.name">
+        <button type="button" class="btn btn-default" ng-click="vm.removeCategory(item)">usuń</button>
+      </div>
+    </form>
+    <form class="form-inline">
+        <div class="form-group">
+          <input type="text" class="form-control" ng-model="vm.newCategory">
+          <button type="button" class="btn btn-default" ng-click="vm.insertCategory()">dodaj</button>
         </div>
-    </div>
+    </form>
 
     <div class="szp-admin__list">
         <div class="szp-admin__item" ng-repeat="item in vm.localSzpeje">
@@ -37,7 +45,7 @@
                 <select
                     class=""
                     name=""
-                    ng-options="item.id as item.name for item in vm.categories"
+                    ng-options="item.uri as item.name for item in vm.categories"
                     ng-model="item.categoryId">
 
                 </select>

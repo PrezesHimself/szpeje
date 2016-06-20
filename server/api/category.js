@@ -4,11 +4,9 @@ var mongoose = require('mongoose');
 // define model =================
 var Cateogory = mongoose.model('Cateogory', {
     name : String,
-    id : String,
+    uri : String
 });
 
-
-// get szpeje
 app.get('/api/categories', function(req, res) {
     Cateogory.find(function(err, todos) {
         if (err)
@@ -17,10 +15,8 @@ app.get('/api/categories', function(req, res) {
     });
 });
 
-// remove szpeje
 app.delete('/api/categories', function(req, res) {
-    var categoryId=req.query.categoryId;
-    Cateogory.remove({id:categoryId}, function(err, todos) {
+    Cateogory.remove({_id:req.body._id}, function(err, todos) {
         if (err) {
             res.send(err);
         }
@@ -28,7 +24,21 @@ app.delete('/api/categories', function(req, res) {
     });
 });
 
-app.post('/api/categories', function(req, res) {
+app.put('/api/categories', function(req, res) {
     var data = [].concat(req.body);
-    Cateogory.insertMany(data);
+    Cateogory.insertMany(data, onInsert);
+
+    function onInsert(err, docs) {
+        if (err) {
+            // TODO: handle error
+        } else {
+            Cateogory.find({name:data[0].name},function(err, todos) {
+                if (err) {
+                    res.send(err)
+                } else {
+                    res.json(todos);
+                }
+            });
+        }
+    }
 });

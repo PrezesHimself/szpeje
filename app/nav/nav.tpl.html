@@ -5,7 +5,7 @@
     <div class="szp-nav__static-nav">
         <ul>
             <li ng-repeat="category in vm.categories | limitTo: 4">
-                <a ui-sref="app.catalog({catgoryId: category.id, itemId: null})" ng-click="vm.hide()">{{category.name}}</a>
+                <a ui-sref="app.catalog({catgoryId: category.uri, itemId: null})" ng-click="vm.hide()">{{category.name}}</a>
             </li>
             <li>
                 <a href="https://www.facebook.com/szpeje/?fref=ts">FACEBOOK</a>

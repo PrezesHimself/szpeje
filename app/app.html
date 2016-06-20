@@ -20,7 +20,10 @@
     <div class="szp-wrapper">
         <div ui-view="" class="szp-uiview"></div>
     </div>
-    <footer class="szp-footer">
+</div>
+
+<footer class="szp-footer">
+    <div class="szp-footer__small-wrapper">
         <p class="szp-footer__nav">
             <a href="https://www.facebook.com/szpeje/?fref=ts">FACEBOOK</a>
             <span class="szp-footer__separator">|</span>
@@ -29,8 +32,24 @@
         <p class="szp-footer__copyright">
             Copyright  2016
         </p>
-    </footer>
-</div>
+    </div>
+    <div class="szp-footer__large-wrapper">
+        <ul>
+            <li>
+                <a ui-sref="app.home" ng-click="vm.hide()">O nas</a>
+            </li>
+            <li>
+                <a ui-sref="app.catalog({catgoryId: null, itemId: null})" ng-click="vm.hide()">Szpejowa Kolekcja</a>
+            </li>
+            <li>
+                <a ui-sref="app.contact" ng-click="vm.hide()">Kontakt</a>
+            </li>
+        </ul>
+        <div class="szp-footer__copyrights">
+            Copyright Alright
+        </div>
+    </div>
+</footer>
 
 </script>
 <script async src="app/szpeje.js"></script>

@@ -30,7 +30,10 @@
         }
 
         function getCategories() {
-            vm.categories = SzpejeApi.getCategories();
+            SzpejeApi.getCategories()
+                .then(function(results){
+                    vm.categories = results.data;
+                });
         }
     }
 

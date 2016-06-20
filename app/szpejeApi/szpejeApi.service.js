@@ -29,7 +29,6 @@ angular.module('szpeje.szpejeApi', [])
 
         this.getSzpejeByCategoryId = function(categoryId) {
             var url = '/api/szpeje?categoryId='+categoryId;
-            console.log(url, 'test');
             promise = $http.get(url).error(function (response, status) {
             });
 
@@ -37,10 +36,39 @@ angular.module('szpeje.szpejeApi', [])
         };
 
         this.getCategories = function() {
-            return [
-                {id: 1, name: 'Meble'},
-                {id: 2, name: 'Szpeje'}
-            ];
+            var url = '/api/categories';
+            promise = $http.get(url).error(function (response, status) {
+            });
+
+            return promise;
+        }
+
+        this.insertCategory = function(data) {
+            var url = '/api/categories';
+            promise = $http(
+                {
+                    url: url,
+                    method: 'PUT',
+                    data: data,
+                    headers: {"Content-Type": "application/json;charset=utf-8"}
+                }
+            );
+
+            return promise;
+        }
+
+        this.removeCategory = function(data) {
+            var url = '/api/categories';
+            promise = $http(
+                {
+                    url: url,
+                    method: 'DELETE',
+                    data: data,
+                    headers: {"Content-Type": "application/json;charset=utf-8"}
+                }
+            );
+
+            return promise;
         }
 
     }]);

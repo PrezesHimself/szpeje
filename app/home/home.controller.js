@@ -12,7 +12,8 @@
               });
               vm.szpeje = _.filter(res, function(item) {
                   return item.price && item.available;
-              })
+              });
+              console.log(vm.szpeje);
           });
 
     }

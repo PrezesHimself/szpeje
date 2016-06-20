@@ -48,7 +48,10 @@
                   vm.localSzpeje = results.data;
             });
 
-            vm.categories = SzpejeApi.getCategories();
+            SzpejeApi.getCategories()
+                .then(function(results){
+                    vm.categories = results.data;
+                });
         };
 
         function synchronize() {
@@ -79,6 +82,30 @@
 
         function clearSzpejeCollection() {
             BehanceApi.deleteSzpeje();
+        }
+
+        vm.insertCategory = function() {
+            if(!vm.newCategory.length || _.some(vm.categories, {name: vm.newCategory})) {
+                return;
+            };
+            SzpejeApi.insertCategory(
+                {
+                    name: vm.newCategory,
+                    uri: vm.newCategory.toLowerCase().split(' ').join('-')
+                }
+            )
+            .then(function(result) {
+                vm.categories.push(result.data[0]);
+                vm.newCategory = '';
+            })
+        }
+
+        vm.removeCategory = function(category) {
+
+            vm.categories.splice(vm.categories.indexOf(category), 1)
+            SzpejeApi.removeCategory(
+                category
+            );
         }
 
         function save() {
