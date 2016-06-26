@@ -15,23 +15,7 @@
    ng-if="vm.szpeje && !vm.szpeja">
 
        <h2>{{vm.category.name}}</h2> <br/>
-       <div class="szp-itemlist">
-           <a
-               href=""
-               ui-sref="app.catalog({catgoryId: szpeja.categoryId, itemId: szpeja.id})"
-               class="szp-itemlist__item" ng-repeat="szpeja in vm.szpeje | orderBy: 'published_on' | limitTo:8">
-               <div class="szp-itemlist__photo"
-                   style="background-image: url('{{szpeja.covers['202']}}'); width: 202px; height: 202px;">
-
-               </div>
-               <p class="szp-itemlist__info">
-                   {{szpeja.name}}
-               </p>
-               <p class="szp-itemlist__price" ng-if="szpeja.price">
-                   {{szpeja.price}} PLN
-               </p>
-           </a>
-       </div>
+        <szpeje-images-list szpeje="vm.szpeje" search="vm.serach"></szpeje-images-list>
    </div>
 
    <div ng-if="vm.szpeja" class="szp-szpeja">

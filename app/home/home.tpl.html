@@ -8,23 +8,4 @@
         ng-model="vm.serach"
         placeholder="szukaj">
 </div>
-<div class="szp-itemlist">
-    <a
-        href=""
-        ui-sref="app.catalog({catgoryId: szpeja.categoryId, itemId: szpeja.id})"
-        class="szp-itemlist__item" ng-repeat="szpeja in vm.szpeje | orderBy: 'published_on' | limitTo:8 | filter: vm.serach">
-        <div class="szp-itemlist__photo"
-            style="background-image: url('{{szpeja.covers['202']}}'); width: 202px; height: 202px;">
-
-        </div>
-        <p class="szp-itemlist__info" style="width: 202px">
-            {{szpeja.name}} <br><br>
-            <span class="szp-itemlist__price" ng-if="szpeja.price">
-                {{szpeja.price}} PLN
-            </span>
-        </p>
-    </a>
-    <div ng-if="!(vm.szpeje | filter: vm.serach).length">
-        Nic nie ma :<
-    </div>
-</div>
+<szpeje-images-list szpeje="vm.szpeje" search="vm.serach"></szpeje-images-list>

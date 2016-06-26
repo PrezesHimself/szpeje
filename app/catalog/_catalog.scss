@@ -29,8 +29,13 @@
 
     // bootstrap ui
     .carousel {
-        min-height: 280px;
         margin-bottom: 20px
+    }
+    .carousel-inner, .carousel-inner > .item {
+        height: 200px;
+    }
+    .carousel-inner img {
+        height: 100%;
     }
     .carousel-control {
         color: black;

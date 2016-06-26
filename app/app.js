@@ -11,6 +11,7 @@ angular.module('szpeje', [
   'szpeje.szpejeApi',
   'szpeje.admin',
   'szpeje.behanceApi',
+  'szpeje.images-list',
   'ui.bootstrap',
   'ngAside',
   'ngAnimate',
