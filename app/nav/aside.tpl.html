@@ -1,7 +1,7 @@
 <div class="modal-header">
     <ul>
         <li ng-repeat="category in vm.vm.categories | limitTo: 4">
-            <a ui-sref="app.catalog({catgoryId: category.id, itemId: null})" ng-click="vm.hide()">{{category.name}}</a>
+            <a ui-sref="app.catalog({catgoryId: category.uri, itemId: null})" ng-click="vm.hide()">{{category.name}}</a>
         </li>
     </ul>
 </div>
@@ -11,7 +11,7 @@
           <a ui-sref="app.home" ng-click="vm.hide()">O nas</a>
       </li>
       <li>
-          <a ui-sref="app.catalog({catgoryId: null, itemId: null})" ng-click="vm.hide()">Szpejowa Kolekcja</a>
+          <a ui-sref="app.catalog({catgoryId: undefined, itemId: undefined})" ng-click="vm.hide()">Szpejowa Kolekcja</a>
       </li>
       <li>
           <a ui-sref="app.contact" ng-click="vm.hide()">Kontakt</a>

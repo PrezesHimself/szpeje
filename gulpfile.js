@@ -8,6 +8,7 @@ var concat = require('gulp-concat');
 var ngAnnotate = require('gulp-ng-annotate');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
+var gutil = require('gulp-util');
 
 gulp.task('default', ['browser-sync'], function () {
 });
@@ -29,8 +30,8 @@ gulp.task('js', function () {
 			'./app/**/*.js'
 		])
 	  	.pipe(concat('szpeje.js'))
-			// .pipe(ngAnnotate())
-			// 	.pipe(uglify())
+			.pipe(process.env.NODE_ENV === 'production' ? ngAnnotate() : gutil.noop() )
+				.pipe(process.env.NODE_ENV === 'production' ? uglify() : gutil.noop())
 	    .pipe(gulp.dest('./dist'));
 });
 

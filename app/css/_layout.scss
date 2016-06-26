@@ -7,3 +7,14 @@ h2 {
   font-weight: bold;
   font-size: 24px;
 }
+
+
+.szp-hide-for-small {
+  display: none;
+}
+
+@media (min-width: $break-small) {
+  .szp-hide-for-small {
+    display: block;
+  }
+}

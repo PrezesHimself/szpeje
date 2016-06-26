@@ -1,12 +1,7 @@
 <p>
   <div
-    data-ng-repeat="project in vm.projects"
-    ng-if="vm.projects"
-    class="projects">
-       <a ui-sref="app.catalog({catgoryId: project.id})">
-         <h5>{{ project.name }}</h5>
-         <img src="{{ project.covers['202'] }}"/><br>
-       </a>
+    ng-if="vm.projects">
+      <szpeje-images-list szpeje="vm.projects" search="vm.serach"></szpeje-images-list>
 
 
    </div>
