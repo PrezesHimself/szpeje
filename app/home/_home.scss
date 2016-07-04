@@ -43,6 +43,7 @@
 
 @media (min-width: $break-small) {
     .szp-itemlist {
+        justify-content: flex-start;
         &__item {
             position: relative;
             flex: 0 0 20%;

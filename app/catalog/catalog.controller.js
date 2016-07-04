@@ -32,7 +32,7 @@
                       var currIndex = 0;
                       _.each(vm.szpeja.modules, function(item) {
                           vm.slides.push({
-                            image: item.src,
+                            image: item.sizes.disp,
                             text: item.caption_plain,
                             id: currIndex++
                           });

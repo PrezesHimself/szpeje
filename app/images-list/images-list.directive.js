@@ -24,6 +24,6 @@
 
     function ImagesListController() {
         var vm = this;
-
+        console.log(vm.szpeje[0]);
     }
 }());

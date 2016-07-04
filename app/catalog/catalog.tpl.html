@@ -31,14 +31,16 @@
                   </uib-slide>
             </uib-carousel>
         </div>
-        <h4>{{vm.szpeja.name}}</h4>
-        <p class="szp-szpeja__price" ng-if="vm.szpeja.price">
-          {{vm.szpeja.price}} PLN
-        </p>
-        <p>
-            {{vm.szpeja.description}}
-        </p>
-        <szpeje-contact-form subject="vm.szpeja.name"></szpeje-contact-form>
+        <div class="szp-info">
+            <h4>{{vm.szpeja.name}}</h4>
+            <p class="szp-szpeja__price" ng-if="vm.szpeja.price">
+              {{vm.szpeja.price}} PLN
+            </p>
+            <p>
+                {{vm.szpeja.description}}
+            </p>
+            <szpeje-contact-form subject="vm.szpeja.name"></szpeje-contact-form>
+        </div>
 
    </div>
    <szpeje-loader ng-if="!vm.szpeje && !vm.projects"></szpeje-loader>
