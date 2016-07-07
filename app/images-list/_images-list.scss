@@ -1,11 +1,18 @@
 .szp-itemlist {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     &__photo {
+      background: #eaeaea;
+      min-height: 100px;
+      background: #eaeaea left center no-repeat;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      margin-bottom: 5px;
+      width: 100%;
+      height: 100%;
       img {
         width: 100%;
-        height: auto;
       }
     }
     &__price {
@@ -15,7 +22,6 @@
         font-weight: bold;
         font-size:   10px;
         text-overflow: ellipsis;
-        width: 100%;
     }
     &__item {
         flex: 0 1 calc(50% - 10px);
@@ -29,6 +35,7 @@
 
 @media (min-width: $break-small) {
     .szp-itemlist {
+        justify-content: center;
         &__item {
             position: relative;
             flex: 0 0 20%;
@@ -37,6 +44,7 @@
         &__photo {
             transition: opacity .4s;
             opacity: 1;
+            margin: auto;
         }
         &__info {
             position: absolute;
@@ -50,7 +58,7 @@
             justify-content: center;
             transition: opacity .4s;
             text-align: center;
-            width: 100%;
+            width: calc(100% - 20px);
         }
         &__item:hover {
             .szp-itemlist__photo {
