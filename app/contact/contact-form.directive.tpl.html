@@ -25,7 +25,7 @@
         <button type="button" name="button" ng-click="vm.sendMail()">send mail</button>
         <!-- <button type="button" name="button" ng-click="vm.szpeje()">szpej</button>
         <button type="button" name="button" ng-click="vm.postSzpeje()">postSzpeje</button> -->
-        <span ng-if="vm.sending"> Wysyłeczka </span>
-        <span ng-if="!vm.sending"> {{vm.message}}</span>
+        <span ng-if="!vm.sending"> {{vm.message}} </span>
+        <szpeje-loader ng-if="vm.sending"></szpeje-loader>
     </p>
 </div>

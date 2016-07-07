@@ -7,11 +7,14 @@
 
         this.openImage = openImage;
         vm.slides = [];
-
         if (!$stateParams.catgoryId) {
           SzpejeApi.getSzpeje()
             .then(function(results) {
-              vm.projects = results;
+              var res = _.map(results.data, function(item) {
+                  return JSON.parse(item.json);
+              });
+
+              vm.projects = res;
             });
 
         } else if($stateParams.catgoryId){

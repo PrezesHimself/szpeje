@@ -8,6 +8,7 @@
 @import 'home/home';
 @import 'nav/nav';
 @import 'admin/admin';
+@import 'images-list/images-list';
 @import 'loader/loader';
 @import 'catalog/catalog';
 @import 'css/footer';
@@ -16,7 +17,6 @@
 @import 'css/form';
 @import 'css/layout';
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
 
 body, html {
   font-family: 'Open Sans', sans-serif;
@@ -80,6 +80,9 @@ ol, ul {
         font-weight: bold;
     }
 }
+.modal.fade .modal-dialog {
+    transform: translate(0, 0);
+}
 
 .modal-dialog.modal-fs {
     width: 100%;
@@ -88,11 +91,11 @@ ol, ul {
     margin: 0;
 
     .modal-content {
-        height: 100%;
-        min-height: 100%;
-        height: auto;
+        height: 100vh;
+        top: 0px;
         border-radius: 0;
         max-width: 100vw;
         width: 100vw;
+        transform: translate(0, 0%)
     }
 }

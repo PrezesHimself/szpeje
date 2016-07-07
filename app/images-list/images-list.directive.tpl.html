@@ -5,9 +5,8 @@
         class="szp-itemlist__item" ng-repeat="szpeja in vm.szpeje | orderBy: 'published_on' | limitTo:8 | filter: vm.search">
         <div class="szp-itemlist__photo"
             style="background-image: url('{{szpeja.modules[0].sizes.disp}}'); width: 202px; height: 202px;">
-
         </div>
-        <p class="szp-itemlist__info" style="width: 202px">
+        <p class="szp-itemlist__info">
             {{szpeja.name}} <br><br>
             <span class="szp-itemlist__price" ng-if="szpeja.price">
                 {{szpeja.price}} PLN
@@ -15,6 +14,6 @@
         </p>
     </a>
     <div ng-if="!(vm.szpeje | filter: vm.search).length">
-        Nic nie ma :<
+
     </div>
 </div>
