@@ -16,7 +16,7 @@
 @import 'css/reset';
 @import 'css/form';
 @import 'css/layout';
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
 body, html {
   font-family: 'Open Sans', sans-serif;
@@ -42,15 +42,6 @@ ol, ul {
     list-style: none outside none;
 }
 
-
-.content {
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh - 100px);
-    max-width: 1140px;
-    margin: auto;
-    overflow-x: hidden;
-}
 
 
 

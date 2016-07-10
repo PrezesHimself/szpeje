@@ -61,14 +61,14 @@ gulp.task('html', function () {
 
 gulp.task('images', function () {
 
-	gulp.src('./app/**/*.jpg')
+	gulp.src(['./app/**/*.jpg', './app/**/*.png'])
     .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('watch', function () {
   gulp.watch('./app/**/*.html', ['html', browserSync.reload]);
   gulp.watch('./app/**/*.js', ['js', browserSync.reload]);
-  gulp.watch('./app/**/*.jpg', ['images', browserSync.reload]);
+  gulp.watch(['./app/**/*.jpg', './app/**/*.png'], ['images', browserSync.reload]);
   return gulp.watch('./app/**/*.scss', ['sass', browserSync.reload]);
 });
 

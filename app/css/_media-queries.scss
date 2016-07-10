@@ -1,1 +1,20 @@
 $break-small: 768px;
+
+
+.hide-for-small {
+  visibility: hidden;
+  display: none !important;
+}
+@media (min-width: $break-small) {
+  .hide-for-small {
+    visibility: visible;
+    display: inherit !important;
+  }
+}
+
+
+@media (min-width: $break-small) {
+  .hide-for-big {
+    display: none !important;
+  }
+}
