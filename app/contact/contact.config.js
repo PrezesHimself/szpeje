@@ -7,6 +7,9 @@
         $stateProvider
             .state('app.contact', {
                 url: 'contact',
+                params: {
+                    subject: null
+                },
                 templateUrl: 'app/tpl/contact/contact.tpl.html',
                 controller: 'ContactController',
                 controllerAs: 'vm'

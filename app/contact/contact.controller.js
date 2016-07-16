@@ -2,11 +2,13 @@
 
 (function() {
 
-    function ContactController(SendGrid) {
+    function ContactController(SendGrid, $stateParams) {
+        var vm = this;
 
+        vm.subject = $stateParams.subject; 
     }
 
-    ContactController.$inject = ['SendGrid']
+    ContactController.$inject = ['SendGrid', '$stateParams']
 
     angular.module('szpeje.contact')
         .controller('ContactController', ContactController);
