@@ -1,7 +1,16 @@
 <div ng-if="!vm.isAuth">
-    @: <input type="text" name="name" value="" ng-model="vm.email">
-    P: <input type="password" name="name" value="" ng-model="vm.password">
-    <button type="button" name="button" ng-click='vm.login()'>login</button>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"  ng-model="vm.email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="vm.password">
+      </div>
+      <button type="button" class="btn btn-default" ng-click='vm.login()'>Login</button>
+    </form>
+
 </div>
 <div ng-if="vm.isAuth">
     <form role="form" class="form-inline">
@@ -10,49 +19,65 @@
         <button type="button" name="button" ng-click='vm.save()' class="btn btn-primary">save</button>
     </form>
     <br>
-    <form role="form" class="form-inline" ng-repeat="item in vm.categories" style="margin-bottom:4px;">
-      <div class="form-group">
-        <input type="text" class="form-control" id="email" ng-model="item.name">
-        <button type="button" class="btn btn-default" ng-click="vm.removeCategory(item)">usuń</button>
-      </div>
-    </form>
-    <form class="form-inline">
-        <div class="form-group">
-          <input type="text" class="form-control" ng-model="vm.newCategory">
-          <button type="button" class="btn btn-default" ng-click="vm.insertCategory()">dodaj</button>
-        </div>
-    </form>
-
-    <div class="szp-admin__list">
-        <div class="szp-admin__item" ng-repeat="item in vm.localSzpeje">
-            <h2>{{item.name}} <> {{item.categoryId}}</h2>
-            <p>
-              <div class="" ng-repeat="module in item.modules">
-                  <img src="{{module.src}}" alt="" />
+    <uib-tabset active="active">
+      <uib-tab index="0" heading="Kategorie">
+          <br>
+          <form role="form" class="form-inline" ng-repeat="item in vm.categories" style="margin-bottom:4px;">
+            <div class="form-group">
+              <input type="text" class="form-control" id="email" ng-model="item.name">
+              <button type="button" class="btn btn-default" ng-click="vm.removeCategory(item)">usuń</button>
+            </div>
+          </form>
+          <form class="form-inline">
+              <div class="form-group">
+                <input type="text" class="form-control" ng-model="vm.newCategory">
+                <button type="button" class="btn btn-default" ng-click="vm.insertCategory()">dodaj</button>
               </div>
-            </p>
-            <p>
-              <textarea name="name" rows="8" cols="40" ng-model="item.description"></textarea>
-            </p>
-            <p>
-              <label for="">price</label><input type="text" name="name" value="" ng-model="item.price">
-            </p>
-            <p>
-              <label for="">name</label><input type="text" name="name" value="" ng-model="item.name">
-            </p>
-            <p>
-              <label for="">available</label><input type="checkbox" name="name" value="" ng-model="item.available">
-            </p>
-            <p>
-                <select
-                    class=""
-                    name=""
-                    ng-options="item.uri as item.name for item in vm.categories"
-                    ng-model="item.categoryId">
+          </form>
+      </uib-tab>
+      <uib-tab index="$index + 1" ng-repeat="tab in tabs" heading="{{tab.title}}" disable="tab.disabled">
+        {{tab.content}}
+      </uib-tab>
+      <uib-tab index="3">
+        <uib-tab-heading>
+          Szpeje
+        </uib-tab-heading>
+        <div class="szp-admin__list">
+            <div class="szp-admin__item" ng-repeat="item in vm.localSzpeje">
+                <h2>{{item.name}} <> {{item.categoryId}}</h2>
+                <p>
+                  <div class="" ng-repeat="module in item.modules">
+                      <img src="{{module.src}}" alt="" />
+                  </div>
+                </p>
+                <p>
+                  <textarea name="name" rows="8" cols="40" ng-model="item.description"></textarea>
+                </p>
+                <p>
+                  <label for="">price</label><input type="text" name="name" value="" ng-model="item.price">
+                </p>
+                <p>
+                  <label for="">name</label><input type="text" name="name" value="" ng-model="item.name">
+                </p>
+                <p>
+                  <label for="">available</label><input type="checkbox" name="name" value="" ng-model="item.available">
+                </p>
+                <p>
+                    <select
+                        class=""
+                        name=""
+                        ng-options="item.uri as item.name for item in vm.categories"
+                        ng-model="item.categoryId">
 
-                </select>
-            </p>
-            <button type="button" name="button" ng-click="vm.delete(item.id)">usuń</button>
+                    </select>
+                </p>
+                <button type="button" name="button" ng-click="vm.delete(item.id)">usuń</button>
+            </div>
         </div>
-    </div>
+      </uib-tab>
+    </uib-tabset>
+
+
+
+
 </div>
