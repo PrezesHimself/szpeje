@@ -2,7 +2,7 @@
 
 (function() {
 
-    function AdminController($q, $rootScope, BehanceApi, SzpejeApi, $auth) {
+    function AdminController($q, $rootScope, BehanceApi, SzpejeApi, $auth, NgTableParams) {
         var vm = this;
 
         vm.synchronize = synchronize;
@@ -40,12 +40,14 @@
 
 
         function init() {
+
             SzpejeApi.getSzpeje()
               .then(function(results) {
                   results.data = _.map(results.data, function(item) {
                       return JSON.parse(item.json);
                   });
                   vm.localSzpeje = results.data;
+                  vm.tableParams = new NgTableParams({}, { dataset: vm.localSzpeje});
             });
 
             SzpejeApi.getCategories()
@@ -109,6 +111,7 @@
         }
 
         function save() {
+            vm.showLoader = true;
             SzpejeApi.deleteSzpeje()
                 .then(function(){
                     var payload = _.map(vm.localSzpeje, function(item) {
@@ -124,6 +127,7 @@
                     });
                     SzpejeApi.insertSzpeje(payload)
                         .then(function() {
+                            vm.showLoader = false;
                               $rootScope.$broadcast('szpeje-saved');
                         }
                     );
@@ -132,7 +136,7 @@
 
     }
 
-    AdminController.$inject = ['$q', '$rootScope', 'BehanceApi', 'SzpejeApi', '$auth']
+    AdminController.$inject = ['$q', '$rootScope', 'BehanceApi', 'SzpejeApi', '$auth', 'NgTableParams']
 
     angular.module('szpeje.admin')
         .controller('AdminController', AdminController);

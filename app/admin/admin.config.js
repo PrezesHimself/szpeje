@@ -2,7 +2,7 @@
   'use strict';
 
     angular.module('szpeje.admin',
-    ['ui.router'])
+    ['ui.router', 'ngTable'])
     .config(function($stateProvider) {
         $stateProvider
             .state('app.admin', {

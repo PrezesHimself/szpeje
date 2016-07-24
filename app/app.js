@@ -16,7 +16,8 @@ angular.module('szpeje', [
   'ngAside',
   'ngAnimate',
   'ngTouch',
-  'satellizer'
+  'satellizer',
+  'ngTable'
 ])
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$authProvider',
     function($urlRouterProvider, $stateProvider, $locationProvider, $authProvider) {

@@ -27,6 +27,7 @@ gulp.task('js', function () {
 			'./bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
 			'./bower_components/satellizer/satellizer.js',
 			'./bower_components/lodash/dist/lodash.js',
+			'./bower_components/ng-table/dist/ng-table.js',
 			'./app/**/*.js'
 		])
 	  	.pipe(concat('szpeje.js'))

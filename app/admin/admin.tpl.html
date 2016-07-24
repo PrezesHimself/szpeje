@@ -19,7 +19,63 @@
         <button type="button" name="button" ng-click='vm.save()' class="btn btn-primary">save</button>
     </form>
     <br>
+
+
     <uib-tabset active="active">
+        <uib-tab index="3">
+          <uib-tab-heading>
+            Szpeje
+          </uib-tab-heading>
+          <table ng-table="vm.tableParams" class="table" show-filter="true">
+              <tr ng-repeat="item in $data">
+                  <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+                      <input type="text" name="name" value="" ng-model="item.name">
+                  </td>
+                  <td title="'Price'" filter="{ price: 'number'}" sortable="'price'">
+                      <input type="text" name="name" value="" ng-model="item.price">
+                  </td>
+                  <td title="'Category'" filter="{ categoryId: 'text'}" sortable="'categoryId'">
+                      <select
+                          class=""
+                          name=""
+                          ng-options="item.uri as item.name for item in vm.categories"
+                          ng-model="item.categoryId">
+
+                      </select>
+                  </td>
+                  <td title="'available'" filter="{ available: 'text'}" sortable="'available'">
+                        <input type="checkbox" name="name" value="" ng-model="item.available" class="ng-pristine ng-valid ng-not-empty ng-touched">
+                  </td>
+              </tr>
+          </table>
+          <div class="szp-admin__list">
+              <div class="szp-admin__item" ng-repeat="item in vm.localSzpeje">
+                  <h2>{{item.name}} <> {{item.categoryId}}</h2>
+                  <p>
+                    <div class="" ng-repeat="module in item.modules">
+                        <img src="{{module.src}}" alt="" />
+                    </div>
+                  </p>
+                  <p>
+                    <textarea name="name" rows="8" cols="40" ng-model="item.description"></textarea>
+                  </p>
+                  <p>
+                    <label for="">price</label><input type="text" name="name" value="" ng-model="item.price">
+                  </p>
+                  <p>
+                    <label for="">name</label><input type="text" name="name" value="" ng-model="item.name">
+                  </p>
+                  <p>
+                    <label for="">available</label><input type="checkbox" name="name" value="" ng-model="item.available">
+                  </p>
+                  <p>
+
+                  </p>
+                  <button type="button" name="button" ng-click="vm.delete(item.id)">usuń</button>
+              </div>
+          </div>
+        </uib-tab>
+
       <uib-tab index="0" heading="Kategorie">
           <br>
           <form role="form" class="form-inline" ng-repeat="item in vm.categories" style="margin-bottom:4px;">
@@ -38,46 +94,11 @@
       <uib-tab index="$index + 1" ng-repeat="tab in tabs" heading="{{tab.title}}" disable="tab.disabled">
         {{tab.content}}
       </uib-tab>
-      <uib-tab index="3">
-        <uib-tab-heading>
-          Szpeje
-        </uib-tab-heading>
-        <div class="szp-admin__list">
-            <div class="szp-admin__item" ng-repeat="item in vm.localSzpeje">
-                <h2>{{item.name}} <> {{item.categoryId}}</h2>
-                <p>
-                  <div class="" ng-repeat="module in item.modules">
-                      <img src="{{module.src}}" alt="" />
-                  </div>
-                </p>
-                <p>
-                  <textarea name="name" rows="8" cols="40" ng-model="item.description"></textarea>
-                </p>
-                <p>
-                  <label for="">price</label><input type="text" name="name" value="" ng-model="item.price">
-                </p>
-                <p>
-                  <label for="">name</label><input type="text" name="name" value="" ng-model="item.name">
-                </p>
-                <p>
-                  <label for="">available</label><input type="checkbox" name="name" value="" ng-model="item.available">
-                </p>
-                <p>
-                    <select
-                        class=""
-                        name=""
-                        ng-options="item.uri as item.name for item in vm.categories"
-                        ng-model="item.categoryId">
 
-                    </select>
-                </p>
-                <button type="button" name="button" ng-click="vm.delete(item.id)">usuń</button>
-            </div>
-        </div>
-      </uib-tab>
     </uib-tabset>
 
 
 
 
 </div>
+<szpeje-loader ng-if="vm.showLoader"></szpeje-loader>
