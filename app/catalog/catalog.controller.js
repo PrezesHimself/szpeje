@@ -5,6 +5,8 @@
     function CatalogController(SzpejeApi, $stateParams, $uibModal) {
         var vm = this;
 
+        vm.openContactModal = openContactModal;
+
         this.openImage = openImage;
         vm.slides = [];
         if (!$stateParams.catgoryId) {
@@ -53,6 +55,18 @@
                        }
                    }
                });
+        }
+
+        function openContactModal(subject) {
+            var modalInstance = $uibModal.open({
+                  template: '<szpeje-contact-form subject="vm.subject" style="padding:20px; display: block;"></szpeje-contact-form>',
+                  size: 'lg',
+                  bindToController: true,
+                  controllerAs: 'vm',
+                  controller: function() {
+                      this.subject = subject;
+                  }
+            });
         }
     }
 

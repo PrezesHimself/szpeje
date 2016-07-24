@@ -32,9 +32,9 @@
               {{vm.szpeja.price}} PLN
             </p>
             <p class="hide-for-small">
-              <a href="#" class="szp-order-button" ui-sref="app.contact({subject: vm.szpeja.name})"> Zapytaj/zamów </a>
+              <a href="#" class="szp-order-button" ng-click="vm.openContactModal(vm.szpeja.name)"> Zapytaj/zamów </a>
             </p>
-            <p>
+            <p class="szp-szpeja__desc">
                 {{vm.szpeja.description}}
             </p>
             <szpeje-contact-form subject="vm.szpeja.name" class="hide-for-big"></szpeje-contact-form>

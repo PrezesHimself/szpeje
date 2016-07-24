@@ -13,13 +13,27 @@
       margin-top: 10px;
     }
 
-    &__copyright {
-      font-size: 12px;
+    &__copyrights {
+      font-size: 0.8em;
       opacity: .7;
       margin-top: 10px;
     }
     &__large-wrapper {
         display: none;
+    }
+    a {
+        font-size: 0.8em;
+
+        &:after {
+            padding-left: 4px;
+            content: '|'
+        }
+    }
+
+    li:last-child {
+        a:after {
+            content: '';
+        }
     }
 }
 

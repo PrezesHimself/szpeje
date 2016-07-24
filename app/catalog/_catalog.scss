@@ -28,6 +28,9 @@
         background-image: none;
         text-shadow: none;
         opacity: 1;
+        &:hover, &:visited, &:active {
+            color: inherit;
+        }
     }
 }
 .carousel-indicators {
@@ -42,10 +45,15 @@
 .szp-order-button {
       &, &:link, &:hover, &:active {
             margin: 30px 0;
-            background: #97c5eb;
+            background: #046be0;
             padding: 30px 40px;
             display: inline-block;
             color: white;
+            transition: background .4s;
+      }
+
+      &:hover {
+          background: #5fa3f1;
       }
 }
 
@@ -58,7 +66,14 @@
             opacity: 1;
             font-size: 1.7em;
             color: black;
+            font-weight: bold;
             line-height: 2em;
+        }
+
+        &__desc {
+            padding-top: 25px;
+            margin-top: 10px;
+            border-top: 1px solid rgba(0,0,0,.1)
         }
     }
     .carousel-inner, .carousel-inner > .item {
