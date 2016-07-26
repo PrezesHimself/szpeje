@@ -1,88 +1,11 @@
-.szp-hero {
-    background: #eaeaea;
-    min-height: 150px;
-    padding: 30px;
-
-    &__paragraph {
-        width: 50%;
-    }
-}
-
-.szp-itemlist {
+.szp-home {
     display: flex;
-    flex-wrap: wrap;
-    margin: 0 -10px;
     justify-content: space-between;
-    &__photo {
-      background: #eaeaea;
-      min-height: 100px;
-      background: #eaeaea left center no-repeat;
-      background-size: 100%;
-      background-repeat: no-repeat;
-      margin-bottom: 5px;
-    }
-    &__price {
-        font-size:   10px;
-    }
-    &__info {
-        font-weight: bold;
-        font-size:   10px;
-        text-overflow: ellipsis;
-    }
-    &__item {
-        flex: 0 0 50%;
-        padding: 0 10px;
-        margin-bottom: 40px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-}
-
-
-@media (min-width: $break-small) {
-    .szp-itemlist {
-        justify-content: flex-start;
-        &__item {
-            position: relative;
-            flex: 0 0 20%;
-            padding: 0 10px;
+    margin-top: 60px;
+    &__copy {
+        padding-left: 50px;
+        p {
+            margin-bottom: 30px;
         }
-        &__photo {
-            transition: opacity .4s;
-            opacity: 1;
-        }
-        &__info {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            padding: 20px;
-            opacity: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity .4s;
-            text-align: center;
-            width: 100%;
-        }
-        &__item:hover {
-            .szp-itemlist__photo {
-                opacity: .1;
-            }
-            .szp-itemlist__info {
-                opacity: 1;
-            }
-        }
-    }
-}
-
-.szp-search {
-    text-align: right;
-    margin-bottom: 10px;
-    &__input {
-        border: 0;
-        background: none;
-        border-bottom: #f1f2f2 solid 2px;
     }
 }

@@ -17,20 +17,21 @@ angular.module('szpeje', [
   'ngAnimate',
   'ngTouch',
   'satellizer',
-  'ngTable'
+  'ngTable',
+  'ngMessages'
 ])
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$authProvider',
-    function($urlRouterProvider, $stateProvider, $locationProvider, $authProvider) {
+        function($urlRouterProvider, $stateProvider, $locationProvider, $authProvider) {
+            console.log('test');
+              $urlRouterProvider
+                .otherwise('home');
 
-      $urlRouterProvider
-        .otherwise('home');
+              $stateProvider.state('app', {
+                  abstract: true,
+                  url: '/',
+                  template: '<ui-view/>'
+              });
 
-      $stateProvider.state('app', {
-          abstract: true,
-          url: '/',
-          template: '<ui-view/>'
-      });
-
-      $locationProvider.html5Mode(true);
+              $locationProvider.html5Mode(true);
 
   }]);

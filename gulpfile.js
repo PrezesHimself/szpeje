@@ -25,6 +25,7 @@ gulp.task('js', function () {
 			'./bower_components/angular-aside/dist/js/angular-aside.js',
 			'./bower_components/angular-bootstrap/ui-bootstrap.js',
 			'./bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+			'./bower_components/angular-messages/angular-messages.js',
 			'./bower_components/satellizer/satellizer.js',
 			'./bower_components/lodash/dist/lodash.js',
 			'./bower_components/ng-table/dist/ng-table.js',

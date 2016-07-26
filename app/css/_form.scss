@@ -3,7 +3,7 @@
      input, textarea, button {
          background: #f1f2f2;
          padding: 10px;
-         border: 0;
+         border: 1px solid transparent;
          width: 100%;
          margin-bottom: 3px;
          margin-top: 3px;
@@ -11,10 +11,25 @@
          &:focus {
            outline: none;
          }
+         &.ng-touched.ng-invalid {
+             border: 1px solid #bc2401;
+             background: #e5cfcf;
+         }
+         &:disabled {
+             background: #90a6b9;
+             cursor: disabled;
+             &:hover {
+                 background: #90a6b9;
+             }
+         }
      }
 
      button {
-          background: #6e6d72;
+          background: #0166bc;
           color: #fff;
+          transition: background .4s;
+          &:hover {
+              background: #5fa3f1;
+          }
      }
 }

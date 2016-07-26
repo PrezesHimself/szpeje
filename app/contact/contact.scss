@@ -8,3 +8,17 @@
         margin-bottom: 10px;
     }
 }
+
+.szp-contact {
+    display: flex;
+    flex-wrap: wrap;
+    &__copy {
+        flex: 1 0 100%;
+        p {
+            margin-bottom: 30px;
+        }
+    }
+    &__map, szpeje-contact-form {
+        flex: 1 0 50%;
+    }
+}

@@ -5,6 +5,7 @@ var sendgrid  = require('sendgrid')(apiKey);
 
 app.post('/api/email', function(req, res) {
     var POST = req.body;
+    console.log(POST);
     sendgrid.send({
       to:       'mateuszrorat@gmail.com',
       from:     POST.from,

@@ -32,7 +32,8 @@
     "angular-touch": "1.5.3",
     "satellizer": "^0.14.1",
     "angular-animate": "1.5.5",
-    "ng-table": "^1.0.0"
+    "ng-table": "^1.0.0",
+    "angular-messages": "1.5.3"
   },
   "resolutions": {
     "angular": "1.5.3"

@@ -43,6 +43,12 @@
             });
         }
         function sendMail() {
+            console.log(vm.form);
+
+            if (!vm.form.$valid) {
+                return;
+            }
+
             vm.sending = true;
             SendGrid.send(
                 vm.from,
