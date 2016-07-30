@@ -7,8 +7,10 @@
   <title>Szpeje</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="app/css/szpeje.css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+<noscript id="deferred-styles">
+    <link rel="stylesheet" href="app/css/szpeje.css" media="screen" title="no title" charset="utf-8">
+</noscript>
 </head>
 <body ng-app="szpeje">
   <!--[if lt IE 7]>
@@ -68,6 +70,18 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe4pAfUhBll_D0N2kuOlpLsbJtGaNIlMQ">
 </script>
-
+<script>
+  var loadDeferredStyles = function() {
+    var addStylesNode = document.getElementById("deferred-styles");
+    var replacement = document.createElement("div");
+    replacement.innerHTML = addStylesNode.textContent;
+    document.body.appendChild(replacement)
+    addStylesNode.parentElement.removeChild(addStylesNode);
+  };
+  var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+      webkitRequestAnimationFrame || msRequestAnimationFrame;
+  if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+  else window.addEventListener('load', loadDeferredStyles);
+</script>
 </body>
 </html>
