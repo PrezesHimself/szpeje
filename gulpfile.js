@@ -9,11 +9,33 @@ var ngAnnotate = require('gulp-ng-annotate');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var gutil = require('gulp-util');
+var critical = require('critical');
 
 gulp.task('default', ['browser-sync'], function () {
 });
 
 gulp.task('build', ['js', 'sass', 'html', 'images', 'fonts'], function () {
+});
+
+gulp.task('critical', ['build'], function () {
+	// critical.generate({
+    //     inline: true,
+    //     base: './',
+    //     src: 'dist/app.html',
+    //     dest: 'dist/app.html',
+    //     minify: true,
+    //     width: 320,
+    //     height: 480
+    // });
+	critical.generate({
+		inline: true,
+		base: './',
+		src: 'dist/app.html',
+		dest: 'dist/app.html',
+		minify: true,
+		width: 1024,
+		height: 500
+	});
 });
 
 gulp.task('js', function () {
