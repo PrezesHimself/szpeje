@@ -26,8 +26,9 @@
 
 @media (min-width: $break-small) {
     .szp-contact {
+        justify-content: space-between;
         &__map, szpeje-contact-form {
-            flex: 1 0 50%;
+            flex:0 0 48%;
         }
     }
 }
