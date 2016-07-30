@@ -6,6 +6,11 @@
 
     <div class="szp-nav__static-nav">
         <ul>
+            <li>
+                <a ui-sref="app.catalog({catgoryId: null, itemId: null})">
+                    wszystko
+                </a>
+            </li>
             <li ng-repeat="category in vm.categories | limitTo: 4">
                 <a ui-sref="app.catalog({catgoryId: category.uri, itemId: null})" ng-click="vm.hide()">{{category.name}}</a>
             </li>

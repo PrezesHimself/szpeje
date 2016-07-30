@@ -45,7 +45,15 @@ ol, ul {
 
 
 
+.szp-modal__close {
+    position: relative;;
 
+    a {
+        position: absolute;
+        right:  1em;
+        top: 1em;
+    }
+}
 // animation
 
 .content{

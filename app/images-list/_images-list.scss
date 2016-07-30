@@ -19,10 +19,11 @@
         font-size:   10px;
     }
     &__info {
-        font-weight: bold;
+        font-weight: 300;
         font-size:   10px;
         text-overflow: ellipsis;
         width: 100%;
+        font-size: 1.1em;
     }
     &__item {
         flex: 0 1 calc(50% - 10px);

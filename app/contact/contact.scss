@@ -19,6 +19,14 @@
         }
     }
     &__map, szpeje-contact-form {
-        flex: 1 0 50%;
+        flex: 1 0 100%;
+    }
+}
+
+@media (min-width: $break-small) {
+    .szp-contact {
+        &__map, szpeje-contact-form {
+            flex: 1 0 50%;
+        }
     }
 }

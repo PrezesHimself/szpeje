@@ -18,6 +18,8 @@
          &:disabled {
              background: #90a6b9;
              cursor: disabled;
+             opacity: .3;
+             cursor: not-allowed;
              &:hover {
                  background: #90a6b9;
              }
@@ -32,4 +34,17 @@
               background: #5fa3f1;
           }
      }
+}
+
+.szp-form-row {
+    position: relative;
+
+    [ng-messages] {
+        position: absolute;
+        font-weight: 300;
+        top: -1.1em;
+        right: 0;
+        font-size: 0.8em;
+
+    }
 }

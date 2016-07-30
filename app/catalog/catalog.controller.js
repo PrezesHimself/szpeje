@@ -9,14 +9,17 @@
 
         this.openImage = openImage;
         vm.slides = [];
-        if (!$stateParams.catgoryId) {
-          SzpejeApi.getSzpeje()
-            .then(function(results) {
-              var res = _.map(results.data, function(item) {
-                  return JSON.parse(item.json);
-              });
+        if (!$stateParams.catgoryId || $stateParams.catgoryId === 'sold') {
+            SzpejeApi.getSzpeje()
+                .then(function(results) {
 
-              vm.projects = res;
+            results.data = _.filter(results.data, {available: !$stateParams.catgoryId});
+
+            var res = _.map(results.data, function(item) {
+                 return JSON.parse(item.json);
+            });
+
+                vm.projects = res;
             });
 
         } else if($stateParams.catgoryId){
@@ -59,12 +62,18 @@
 
         function openContactModal(subject) {
             var modalInstance = $uibModal.open({
-                  template: '<szpeje-contact-form subject="vm.subject" style="padding:20px; display: block;"></szpeje-contact-form>',
+                  template:
+                        '<p class="szp-modal__close"><a href="#" ng-click="vm.close()"><i class="fa fa-times"></i></a></p>' +
+                        '<szpeje-contact-form subject="vm.subject" style="padding:20px; display: block;"></szpeje-contact-form>',
                   size: 'lg',
                   bindToController: true,
                   controllerAs: 'vm',
-                  controller: function() {
+                  controller: function($uibModalInstance) {
                       this.subject = subject;
+                      this.close = function() {
+                          console.log('obj');
+                          $uibModalInstance.dismiss('cancel');
+                      }
                   }
             });
         }
