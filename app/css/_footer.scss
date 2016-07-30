@@ -4,11 +4,6 @@
     background: #f1f2f2;
     text-align: center;
 
-    &__separator {
-      margin-left: 6px;
-      margin-right: 6px;
-    }
-
     &__nav {
       margin-top: 10px;
     }
@@ -27,6 +22,9 @@
         &:after {
             padding-left: 4px;
             content: '|'
+        }
+        &:last-child:after {
+            content: '';
         }
     }
 

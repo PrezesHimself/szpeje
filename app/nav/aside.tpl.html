@@ -1,5 +1,8 @@
 <div class="modal-header">
     <ul>
+        <li>
+            <a ui-sref="app.catalog({catgoryId: null, itemId: null})" ng-click="vm.hide()">wszystko</a>
+        </li>
         <li ng-repeat="category in vm.vm.categories | limitTo: 4">
             <a ui-sref="app.catalog({catgoryId: category.uri, itemId: null})" ng-click="vm.hide()">{{category.name}}</a>
         </li>

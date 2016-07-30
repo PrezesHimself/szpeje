@@ -43,6 +43,14 @@ angular.module('szpeje.szpejeApi', [])
             return promise;
         }
 
+        this.updateSzpeje = function(item) {
+            var url = '/api/szpejeUpdate';
+            promise = $http.post(url, item).error(function (response, status) {
+            });
+
+            return promise;
+        }
+
         this.insertCategory = function(data) {
             var url = '/api/categories';
             promise = $http(

@@ -2,10 +2,11 @@
 
 (function() {
 
-    function AdminController($q, $rootScope, BehanceApi, SzpejeApi, $auth, NgTableParams) {
+    function AdminController($q, $rootScope, BehanceApi, SzpejeApi, $auth, $uibModal, NgTableParams) {
         var vm = this;
 
         vm.synchronize = synchronize;
+        vm.synchronizeOne = synchronizeOne;
         vm.save = save;
         init();
 
@@ -38,6 +39,38 @@
               });
         };
 
+        vm.openInModal = function(item) {
+            console.log('nie znasz się na pieskach');
+            var modalInstance = $uibModal.open({
+                 templateUrl : 'app/tpl/admin/modals/edit.tpl.html',
+                 size: 'lg',
+                 controller: AdminEditController,
+                 controllerAs: 'vm',
+                 resolve: {
+                       item: function () {
+                         return item;
+                       }
+                   }
+               });
+        }
+
+        function AdminEditController($uibModalInstance, item) {
+            var vm = this;
+            vm.item = item;
+        }
+
+        function synchronizeOne(item) {
+            console.log(item, 'test');
+            vm.showLoader = true;
+            SzpejeApi.updateSzpeje(item)
+                .then(function() {
+                    vm.showLoader = false;
+                })
+        }
+
+        function refreshTable() {
+            vm.tableParams = new NgTableParams({}, { dataset: vm.localSzpeje});
+        }
 
         function init() {
 
@@ -47,7 +80,23 @@
                       return JSON.parse(item.json);
                   });
                   vm.localSzpeje = results.data;
-                  vm.tableParams = new NgTableParams({}, { dataset: vm.localSzpeje});
+                  _.map(vm.localSzpeje, function(item) {
+                      item.removePhoto = function(module) {
+                          if (item.modules.length > 1) {
+                              item.modules.splice(item.modules.indexOf(module), 1);
+                              console.log(item.modules.length, 'test');
+                          } else {
+                              alert('hej ho nie bedziem usuwać ostatniego zdjęcia!');
+                          }
+                      }
+                      item.remove = function() {
+                          console.log(this, 'test');
+                          vm.localSzpeje.splice(vm.localSzpeje.indexOf(this), 1);
+                          refreshTable();
+                      }
+                      return item;
+                  });
+                  refreshTable();
             });
 
             SzpejeApi.getCategories()
@@ -57,6 +106,7 @@
         };
 
         function synchronize() {
+            vm.showLoader = true;
             BehanceApi.getSzpeje()
               .then(function(results) {
                   var promises = [];
@@ -76,7 +126,9 @@
                                  vm.localSzpeje.push(remoteSzpej);
                              }
 
-                         })
+                         });
+                         refreshTable();
+                         vm.showLoader = false;
                     });
               });
 
@@ -136,7 +188,7 @@
 
     }
 
-    AdminController.$inject = ['$q', '$rootScope', 'BehanceApi', 'SzpejeApi', '$auth', 'NgTableParams']
+    AdminController.$inject = ['$q', '$rootScope', 'BehanceApi', 'SzpejeApi', '$auth', '$uibModal', 'NgTableParams']
 
     angular.module('szpeje.admin')
         .controller('AdminController', AdminController);

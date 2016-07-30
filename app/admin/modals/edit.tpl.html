@@ -1,0 +1,36 @@
+<form class="szp-admin__edit" action="index.html" method="post" style="padding:20px;"szp-admin__edit>
+    <p>
+        <label for="name"> Nazwa </label>
+        <input type="text" name="name" class="form-control" ng-model="vm.item.name">
+    </p>
+    <p>
+        <label for="description"> Opis </label>
+        <textarea
+            name="description"
+            value=""
+            ng-model="vm.item.description"
+            class="form-control">
+        </textarea>
+    </p>
+    <div class="szp-admin__photos">
+      <div class="szp-admin__photo" ng-repeat="module in vm.item.modules" style="background-image: url({{module.src}})">
+          <a href="#" ng-click="vm.item.removePhoto(module)">
+              <i class="fa fa-times" aria-hidden="true"></i>
+          </a>
+
+      </div>
+  </div>
+    <p>
+      <label for="">price</label>
+      <input type="text" name="name" value="" ng-model="vm.item.price" class="form-control">
+    </p>
+    <p>
+      <label for="">name</label>
+      <input type="text" name="name" value="" ng-model="vm.item.name" class="form-control">
+    </p>
+    <p>
+      <label for="">available</label>
+      <input type="checkbox" name="name" value="" ng-model="vm.item.available" >
+    <p>
+
+</form>

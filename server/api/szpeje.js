@@ -43,6 +43,37 @@ app.delete('/api/szpeje', function(req, res) {
     });
 });
 
+// udpdate szpeje
+app.post('/api/szpejeUpdate', function(req, res) {
+    var data = [].concat(req.body)[0];
+
+    Szpej.find(
+        {id: data.id},
+        function(err, todos) {
+            Szpej.update(
+                {id: data.id},
+                {
+                    src : data.src,
+                    id : data.id,
+                    categoryId : data.categoryId,
+                    categoryName : data.categoryName,
+                    caption_plain: data.caption_plain,
+                    available: data.available,
+                    json: JSON.stringify(data)
+                },
+                {upsert: true},
+                function(err, updated) {
+
+                    if (err) {
+                        res.send(err);
+                        }
+
+                    res.json(updated, 'szpeje were successfully updated.' );
+                }
+            );
+    });
+});
+
 app.post('/api/szpeje', function(req, res) {
     var data = [].concat(req.body);
     Szpej.insertMany(data, onInsert);
