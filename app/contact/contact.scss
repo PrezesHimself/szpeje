@@ -16,7 +16,6 @@
         flex: 1 0 100%;
         p {
             margin-bottom: 30px;
-            padding-right: 30%;
         }
     }
     &__map, szpeje-contact-form {
@@ -29,6 +28,11 @@
         justify-content: space-between;
         &__map, szpeje-contact-form {
             flex:0 0 48%;
+        }
+        &__copy {
+            p {
+                padding-right: 30%;
+            }
         }
     }
 }

@@ -9,6 +9,7 @@
             restrict: 'EA',
             templateUrl: 'app/tpl/contact/contact-form.directive.tpl.html',
             scope: {
+                heading: '@?',
                 subject: '=?'
             },
             controller: ContactFormController,

@@ -1,6 +1,6 @@
 <div class="szp-contactform szp-form">
     <form name="vm.form" ng-submit="vm.sendMail()">
-        <h4>Zapytaj/Zamow
+        <h4>{{vm.heading || 'Zapytaj/Zamow'}}
             <small ng-if="!vm.sending"> {{vm.message}} </small>
         </h4>
         <p class="szp-form-row">
