@@ -9,6 +9,7 @@ angular.module('szpeje', [
   'szpeje.nav',
   'szpeje.loader',
   'szpeje.szpejeApi',
+  'szpeje.about',
   'szpeje.admin',
   'szpeje.behanceApi',
   'szpeje.images-list',

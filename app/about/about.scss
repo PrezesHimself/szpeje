@@ -1,0 +1,38 @@
+.szp-about {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0;
+    &__image img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+    &__image, &__copy {
+        flex: 1 1 100%;
+    }
+    &__copy {
+        padding-left: 0;
+    }
+}
+
+@media (min-width: $break-small) {
+    .szp-about {
+        flex-wrap: nowrap;
+        margin-top: 60px;
+        justify-content: space-between;
+        &__image, &__copy {
+            flex: 1 0 auto;
+        }
+
+        &__image img {
+            width: auto;
+            height: auto;
+        }
+        &__copy {
+            padding-left: 50px;
+            p {
+                margin-bottom: 30px;
+            }
+        }
+    }
+}

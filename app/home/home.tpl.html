@@ -1,19 +1,6 @@
-<div class="szp-home">
-    <div class="szp-home__image">
-        <img src="app/assets/img/o_nas.jpg" alt="" />
-    </div>
-    <div class="szp-home__copy">
-        <p>
-            Cześć. Jesteśmy nowohuckimi zbieraczami skarbów, które wprawiliśmy
-w ruch zakłądając sklep “Szpeje” w październiku 2015. Przedmioty które oferujemy to oryginalne przykłady polskiego i czechosłowackieo wzornictwa lat 60. i 70., odrestaurowane meble i fajne pamiątki-prezenty dla odwiedzających muzeum, w którym się mieścimy.
-        </p>
-        <p>    
-            Przedmioty z naszej prywatnej kolekcji udostęlniamy na ustalonych warnukach na potrzeby np. sesji zdjęciowych. Część z nich można  znaleźć w dziele kolekcja.
-        </p>
-        <p>
-            Jeśli posiadasz rzeczy, które Twoim zdaniem mogą nas zainteresować najlepiej zrób zdjęcia i wyślij je na sdres mailowy szpeje@yahoo.com. Jeśli nas zainteresują na pewno się odezwiemy. Jeśli opróżniasz stare
-            na terenie Krakowa, chętnie rzucimy okiem na wyposażenie zanim trafi
-            na śmietnik. Nie skupujemy mebli wielkogabarytowych (szafy, meblościanki, segmenty).
-        </p>
-    </div>
-</div>
+<div class="project"
+  ng-if="vm.projects">
+    <szpeje-images-list szpeje="vm.projects"></szpeje-images-list>
+
+
+ </div>
