@@ -1,6 +1,6 @@
 <div class="szp-contactform szp-form">
     <form name="vm.form" ng-submit="vm.sendMail()">
-        <h4>{{vm.heading || 'Zapytaj/Zamow'}}
+        <h4>{{vm.heading || 'Zapytaj/Zamow'}} <br>
             <small ng-if="!vm.sending"> {{vm.message}} </small>
         </h4>
         <p class="szp-form-row">
@@ -9,11 +9,11 @@
               name="email"
               value=""
               ng-model="vm.from"
-              placeholder="email"
+              placeholder="e-mail"
               required>
               <span ng-messages="vm.form.email.$error" style="color:maroon" role="alert" ng-if="vm.form.email.$invalid && vm.form.email.$touched">
-                    <span ng-message="email">Czekaj... co?</span>
-                    <span ng-message="required">Moglbys wpisac?</span>
+                    <span ng-message="email">Proszę wpisać poprawny adres</span>
+                    <span ng-message="required">Proszę wpisać adres email<span>
               </span>
         </p>
 
@@ -23,7 +23,7 @@
                 name="text"
                 value=""
                 ng-model="vm.subject"
-                placeholder="subject"
+                placeholder="tytuł"
                 required
                 ng-minlength="5">
             <span
@@ -31,8 +31,8 @@
                 style="color:maroon"
                 role="alert"
                 ng-if="vm.form.text.$invalid && vm.form.text.$touched">
-                  <span ng-message="required">Moglbys wpisac?</span>
-                  <span ng-message="minlength">Hej! napisz coś więcej</span>
+                  <span ng-message="required">Proszę wpisać tytuł wiadomości</span>
+                  <span ng-message="minlength">Proszę wpisać minmum 5 znaków</span>
             </span>
         </p>
 
@@ -43,19 +43,19 @@
                 rows="8"
                 cols="40"
                 ng-model="vm.msg"
-                placeholder="msg"
+                placeholder="wiadomość"
                 ng-minlength="5"
                 required>
             </textarea>
             <span ng-messages="vm.form.msg.$error" style="color:maroon" role="alert" ng-if="vm.form.msg.$invalid && vm.form.msg.$touched">
-                  <span ng-message="required">Moglbys wpisac?</span>
-                  <span ng-message="minlength">Hej! napisz coś więcej </span>
+                  <span ng-message="required">Proszę wpisać treść wiadomości</span>
+                  <span ng-message="minlength">Proszę wpisać minmum 5 znaków</span>
             </span>
         </p>
 
         <p class="szp-form-row">
 
-            <button type="submit" name="button" ng-disabled="vm.form.$invalid">send mail</button>
+            <button type="submit" name="button">send mail</button>
             <!-- <button type="button" name="button" ng-click="vm.szpeje()">szpej</button>
             <button type="button" name="button" ng-click="vm.postSzpeje()">postSzpeje</button> -->
             <szpeje-loader ng-if="vm.sending"></szpeje-loader>

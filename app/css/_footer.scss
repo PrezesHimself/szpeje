@@ -53,6 +53,16 @@
             max-width: 1140px;
             margin: auto;
             height: 100%;
+            li {
+                &:after {
+                    content: '|';
+                    padding: 0 7px;
+                }
+                &:last-child:after {
+                    content: '';
+                    padding: 0;
+                }
+            }
         }
         &__small-wrapper {
             display: none;

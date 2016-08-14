@@ -58,11 +58,11 @@
             )
             .then(function() {
                 vm.sending = false;
-                vm.message = 'dziękoweczka';
+                vm.message = 'Dziękujemy za kontakt!';
             })
             .catch(function(){
                 vm.sending = false;
-                vm.message = 'nie poszedł mail';
+                vm.message = 'Nie udało się wysłać wiadomości, sprawdź czy wszystkie pola wypełnione są prawidłowo';
             })
 
         }

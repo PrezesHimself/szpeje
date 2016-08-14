@@ -11,42 +11,18 @@
 
         geocoder = new google.maps.Geocoder();
 
-        var latlng = new google.maps.LatLng(50.0701868, 20.0412981);
+        var latlng = new google.maps.LatLng(50.06993888, 20.0412459,15);
         var mapOptions = {
             zoom: 15,
             center: latlng
         };
-
+        var marker = new google.maps.Marker({
+            position: latlng,
+            title:"Hello World!"
+        });
         var map = new google.maps.Map(mapDiv, mapOptions);
+        marker.setMap(map);
 
-        google.maps.event.addListenerOnce(map, 'idle', codeAddress);
-
-        function codeAddress() {
-
-            // Define address to center map to
-            var address = 'os. Centrum E1, Kraków, Nowa Huta ';
-
-            geocoder.geocode({
-                'address': address
-            }, function (results, status) {
-
-                if (status == google.maps.GeocoderStatus.OK) {
-
-                    // Center map on location
-                    map.setCenter(results[0].geometry.location);
-
-                    // Add marker on location
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location
-                    });
-
-                } else {
-
-                    alert("Geocode was not successful for the following reason: " + status);
-                }
-            });
-        }
     }
 
     ContactController.$inject = ['SendGrid', '$stateParams']

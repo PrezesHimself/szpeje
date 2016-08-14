@@ -14,6 +14,9 @@
             <li ng-repeat="category in vm.categories | limitTo: 4">
                 <a ui-sref="app.catalog({catgoryId: category.uri, itemId: null})" ng-click="vm.hide()">{{category.name}}</a>
             </li>
+            <li class="separator">
+                &nbsp;
+            </li>
             <li>
                 <a href="https://www.facebook.com/szpeje/?fref=ts" class="social">
                     <img src="app/assets/img/fb.png" alt="" />
