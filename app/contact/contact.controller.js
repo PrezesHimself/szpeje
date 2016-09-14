@@ -9,7 +9,7 @@
 
         var mapDiv = document.getElementById('map');
 
-        geocoder = new google.maps.Geocoder();
+        var geocoder = new google.maps.Geocoder();
 
         var latlng = new google.maps.LatLng(50.06993888, 20.0412459,15);
         var mapOptions = {

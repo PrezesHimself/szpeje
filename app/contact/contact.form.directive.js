@@ -10,7 +10,8 @@
             templateUrl: 'app/tpl/contact/contact-form.directive.tpl.html',
             scope: {
                 heading: '@?',
-                subject: '=?'
+                subject: '=?',
+                closeFn: '&?'
             },
             controller: ContactFormController,
             controllerAs: 'vm',
@@ -20,9 +21,9 @@
         return directive;
     }
 
-    ContactFormController.$inject = ['SendGrid'];
+    ContactFormController.$inject = ['SendGrid', '$timeout'];
 
-    function ContactFormController(SendGrid) {
+    function ContactFormController(SendGrid, $timeout) {
         var vm = this;
         vm.sendMail = sendMail;
         vm.postSzpeje = postSzpeje;
@@ -32,14 +33,12 @@
         function szpeje() {
             SendGrid.szpeje()
             .then(function(result) {
-                console.log(result, 'result');
                 vm.szpeje = result.data;
             });
         }
         function postSzpeje() {
             SendGrid.postSzpeje()
             .then(function(result) {
-                console.log(result, 'result');
                 vm.szpeje = result.data;
             });
         }
@@ -59,6 +58,9 @@
             .then(function() {
                 vm.sending = false;
                 vm.message = 'Dziękujemy za kontakt!';
+                if(vm.closeFn) {
+                    $timeout(vm.closeFn, 500)
+                }
             })
             .catch(function(){
                 vm.sending = false;

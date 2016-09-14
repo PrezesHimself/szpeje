@@ -7,7 +7,7 @@ app.post('/api/email', function(req, res) {
     var POST = req.body;
     console.log(POST);
     sendgrid.send({
-      to:       'mateuszrorat@gmail.com',
+      to:       'szpeje@yahoo.com',
       from:     POST.from,
       subject:  POST.subject,
       text:     POST.msg

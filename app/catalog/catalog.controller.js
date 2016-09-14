@@ -39,6 +39,10 @@
                       vm.szpeja = _.find(vm.szpeje, {id: +$stateParams.itemId});
                       var currIndex = 0;
                       _.each(vm.szpeja.modules, function(item) {
+                          if(!item.sizes) {
+                              return;
+                          }
+
                           vm.slides.push({
                             image: item.sizes.disp,
                             text: item.caption_plain,
@@ -64,14 +68,13 @@
             var modalInstance = $uibModal.open({
                   template:
                         '<p class="szp-modal__close"><a href="#" ng-click="vm.close()"><i class="fa fa-times"></i></a></p>' +
-                        '<szpeje-contact-form subject="vm.subject" style="padding:20px; display: block;"></szpeje-contact-form>',
+                        '<szpeje-contact-form subject="vm.subject" close-fn="vm.close()" style="padding:20px; display: block;"></szpeje-contact-form>',
                   size: 'lg',
                   bindToController: true,
                   controllerAs: 'vm',
                   controller: function($uibModalInstance) {
                       this.subject = subject;
                       this.close = function() {
-                          console.log('obj');
                           $uibModalInstance.dismiss('cancel');
                       }
                   }

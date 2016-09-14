@@ -1,6 +1,6 @@
 <div class="szp-contactform szp-form">
     <form name="vm.form" ng-submit="vm.sendMail()">
-        <h4>{{vm.heading || 'Zapytaj/Zamow'}} <br>
+        <h4>{{vm.heading || 'zapytaj/zamów'}} <br>
             <small ng-if="!vm.sending"> {{vm.message}} </small>
         </h4>
         <p class="szp-form-row">
@@ -55,7 +55,7 @@
 
         <p class="szp-form-row">
 
-            <button type="submit" name="button">send mail</button>
+            <button type="submit" name="button">Wyślij wiadomość</button>
             <!-- <button type="button" name="button" ng-click="vm.szpeje()">szpej</button>
             <button type="button" name="button" ng-click="vm.postSzpeje()">postSzpeje</button> -->
             <szpeje-loader ng-if="vm.sending"></szpeje-loader>
