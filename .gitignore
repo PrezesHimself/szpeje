@@ -12,3 +12,4 @@ server/config.js
 # Docker
 Dockerfile
 docker-compose.yml
+.idea/

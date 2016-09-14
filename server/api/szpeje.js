@@ -67,8 +67,7 @@ app.post('/api/szpejeUpdate', function(req, res) {
                     if (err) {
                         res.send(err);
                         }
-
-                    res.json(updated, 'szpeje were successfully updated.' );
+                    res.json('szpeje were successfully updated.' );
                 }
             );
     });
