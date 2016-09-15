@@ -16,7 +16,6 @@ angular.module('szpeje.behanceApi', [])
         }
 
         this.getProject = function(projectId) {
-          console.log(projectId);
             var url = 'http://behance.net/v2/projects/'+ projectId +'?api_key='+ apiKey +'&callback=JSON_CALLBACK';
             promise = $http.jsonp(url).error(function (response, status) {
             });
@@ -24,8 +23,11 @@ angular.module('szpeje.behanceApi', [])
             return promise;
         }
 
-        this.getSzpeje = function() {
-          var url = 'http://behance.net/v2/users/'+ user +'/projects?api_key='+ apiKey +'&callback=JSON_CALLBACK';
+        this.getSzpeje = function(page) {
+          var url = 'http://behance.net/v2/users/'+ user +
+              '/projects?api_key='+ apiKey +
+              '&page='+ page +
+              '&callback=JSON_CALLBACK';
           return $http.jsonp(url).error(function (response, status) {
           }).success(function(data, status, headers, config) {
             data.date = new Date();

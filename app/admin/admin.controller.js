@@ -40,7 +40,6 @@
         };
 
         vm.openInModal = function(item) {
-            console.log('nie znasz się na pieskach');
             var modalInstance = $uibModal.open({
                  templateUrl : 'app/tpl/admin/modals/edit.tpl.html',
                  size: 'lg',
@@ -107,12 +106,30 @@
 
         function synchronize() {
             vm.showLoader = true;
-            BehanceApi.getSzpeje()
+            var allProjectsPromise = $q.all(
+                [
+                    BehanceApi.getSzpeje(1),
+                    BehanceApi.getSzpeje(2),
+                    BehanceApi.getSzpeje(3),
+                    BehanceApi.getSzpeje(4),
+                    BehanceApi.getSzpeje(5),
+                    BehanceApi.getSzpeje(6),
+                    BehanceApi.getSzpeje(7),
+                    BehanceApi.getSzpeje(8),
+                    BehanceApi.getSzpeje(9),
+                    BehanceApi.getSzpeje(10)
+                ]
+            );
+
+            allProjectsPromise
               .then(function(results) {
+                  console.log(results);
                   var promises = [];
                   var remoteSzpeje = [];
-                  _.each(results.data.projects, function(item) {
-                      promises.push(BehanceApi.getProject(item.id));
+                  _.each(results, function(page) {
+                      _.each(page.data.projects, function (item) {
+                          promises.push(BehanceApi.getProject(item.id));
+                      })
                   });
                   $q.all(promises)
                     .then(function(szpeje) {
