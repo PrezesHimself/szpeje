@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
 require('./api/index.js');
 require('./auth/index.js');
 
-app.use(fallback('app.html', { root: root }));
+app.use(fallback('index.html', { root: root }));
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
