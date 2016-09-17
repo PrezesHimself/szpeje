@@ -9,14 +9,32 @@
 
         this.openImage = openImage;
         vm.slides = [];
-        if (!$stateParams.catgoryId || $stateParams.catgoryId === 'sold') {
+
+        if($stateParams.itemId) {
+            SzpejeApi.getSzpejeById($stateParams.itemId)
+                .then(function (result) {
+                    vm.szpeja = result;
+                    var currIndex = 0;
+                    _.each(vm.szpeja.modules, function(item) {
+                        if(!item.sizes) {
+                            return;
+                        }
+
+                        vm.slides.push({
+                            image: item.sizes.disp,
+                            text: item.caption_plain,
+                            id: currIndex++
+                        });
+                    });
+                })
+        } else if (!$stateParams.catgoryId) {
             SzpejeApi.getSzpeje()
                 .then(function(results) {
 
-            results.data = _.filter(results.data, {available: !$stateParams.catgoryId});
+            results.data = _.filter(results.data, {available: true});
 
             var res = _.map(results.data, function(item) {
-                 return JSON.parse(item.json);
+                return JSON.parse(item.json);
             });
 
                 vm.projects = res;
@@ -32,9 +50,11 @@
                   var res = _.map(results.data, function(item) {
                       return JSON.parse(item.json);
                   });
+
                   vm.szpeje = _.filter(res, function(item) {
                       return item.price && item.available;
-                  })
+                  });
+
                   if($stateParams.itemId) {
                       vm.szpeja = _.find(vm.szpeje, {id: +$stateParams.itemId});
                       var currIndex = 0;

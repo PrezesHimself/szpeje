@@ -59,8 +59,18 @@
         }
 
         function synchronizeOne(item) {
-            console.log(item, 'test');
             vm.showLoader = true;
+            _.map(item, function () {
+                return {
+                    src : item.src,
+                    id : item.id,
+                    categoryId : item.categoryId,
+                    categoryName : item.categoryName,
+                    caption_plain: item.caption_plain,
+                    available: item.available,
+                    json: JSON.stringify(item)
+                }
+            });
             SzpejeApi.updateSzpeje(item)
                 .then(function() {
                     vm.showLoader = false;
@@ -100,7 +110,7 @@
 
             SzpejeApi.getCategories()
                 .then(function(results){
-                    vm.categories = results.data;
+                    vm.categories = results;
                 });
         };
 

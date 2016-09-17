@@ -28,7 +28,7 @@
         </div>
         <div class="szp-info">
             <h4>{{vm.szpeja.name}}</h4>
-            <p class="szp-szpeja__price" ng-if="vm.szpeja.price">
+            <p class="szp-szpeja__price" ng-if="vm.szpeja.price && !vm.category.hidePrice">
               {{vm.szpeja.price}} PLN
             </p>
             <p class="hide-for-small">
@@ -41,5 +41,5 @@
         </div>
 
    </div>
-   <szpeje-loader ng-if="!vm.szpeje && !vm.projects"></szpeje-loader>
+   <szpeje-loader ng-if="!vm.szpeja && !vm.szpeje && !vm.projects"></szpeje-loader>
 </p>

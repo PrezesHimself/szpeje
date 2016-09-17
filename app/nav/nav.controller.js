@@ -32,7 +32,7 @@
         function getCategories() {
             SzpejeApi.getCategories()
                 .then(function(results){
-                    vm.categories = results.data;
+                    vm.categories = results;
                 });
         }
     }

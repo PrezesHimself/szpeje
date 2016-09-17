@@ -27,6 +27,16 @@ angular.module('szpeje.szpejeApi', [])
             return promise;
         };
 
+        this.getSzpejeById = function(szpejeId) {
+            var url = '/api/szpeje?szpejeId='+szpejeId;
+            promise = $http.get(url)
+                .then(function (results) {
+                    return JSON.parse(results.data[0].json);
+                });
+
+            return promise;
+        };
+
         this.getSzpejeByCategoryId = function(categoryId) {
             var url = '/api/szpeje?categoryId='+categoryId;
             promise = $http.get(url).error(function (response, status) {
@@ -37,8 +47,17 @@ angular.module('szpeje.szpejeApi', [])
 
         this.getCategories = function() {
             var url = '/api/categories';
-            promise = $http.get(url).error(function (response, status) {
-            });
+            promise = $http.get(url).error(function (response, status) {})
+                .then(function (results) {
+                    return results.data.concat(_.map(['kolekcja', 'sprzedane'], function (val) {
+                        return {
+                            name: val,
+                            uri: val,
+                            hidePrice: true,
+                            hideInMenu: true
+                        };
+                    }))
+                });
 
             return promise;
         }

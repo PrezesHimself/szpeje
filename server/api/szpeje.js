@@ -16,9 +16,15 @@ var Szpej = mongoose.model('Szpej', {
 // get szpeje
 app.get('/api/szpeje', function(req, res) {
     var categoryId=req.query.categoryId;
-    if(categoryId) {
+    var szpejeId=req.query.szpejeId;
+    var criteria = {};
+
+    if(categoryId) {criteria.categoryId = categoryId}
+    if(szpejeId) {criteria.id = szpejeId}
+
+    if(categoryId || szpejeId) {
         Szpej.find(
-            {categoryId: categoryId},
+            criteria,
             function(err, todos) {
             if (err)
                 res.send(err)
