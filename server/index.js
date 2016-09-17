@@ -25,11 +25,7 @@ app.use(bodyParser.json());
 
 app.set('port', (process.env.PORT || 5000));
 app.use(compression());
-app.use('/webapp/app', express.static(root));
-
-app.get('/webapp', function(req, res) {
-    res.sendFile(path.resolve(root) + '/app.html');
-});
+app.use('/app', express.static(root));
 
 app.get('/', function(req, res) {
     res.sendFile(path.resolve(root) + '/index.html');
