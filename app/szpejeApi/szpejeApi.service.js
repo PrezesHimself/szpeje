@@ -45,6 +45,15 @@ angular.module('szpeje.szpejeApi', [])
             return promise;
         };
 
+        this.getCategorieByName = function(name) {
+            return this.getCategories()
+                .then(function(results){
+                    return _.find(results, function(item) {
+                        return item.name === name;
+                    });
+                });
+        }
+
         this.getCategories = function() {
             var url = '/api/categories';
             promise = $http.get(url).error(function (response, status) {})

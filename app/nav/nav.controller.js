@@ -31,8 +31,10 @@
 
         function getCategories() {
             SzpejeApi.getCategories()
-                .then(function(results){
-                    vm.categories = results;
+                .then(function(results) {
+                    vm.categories = _.filter(results, function (item) {
+                        return !item.hideInMenu;
+                    });
                 });
         }
     }

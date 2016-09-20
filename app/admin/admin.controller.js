@@ -6,8 +6,8 @@
         var vm = this;
 
         vm.synchronize = synchronize;
-        vm.synchronizeOne = synchronizeOne;
-        vm.save = save;
+        vm.saveOne = saveOne;
+        vm.saveAll = saveAll;
         init();
 
         vm.isAuth = $auth.isAuthenticated();
@@ -57,9 +57,7 @@
             var vm = this;
             vm.item = item;
         }
-
-        function synchronizeOne(item) {
-            vm.showLoader = true;
+        function performSave(item) {
             _.map(item, function () {
                 return {
                     src : item.src,
@@ -71,7 +69,11 @@
                     json: JSON.stringify(item)
                 }
             });
-            SzpejeApi.updateSzpeje(item)
+            return SzpejeApi.updateSzpeje(item)
+        }
+        function saveOne(item) {
+            vm.showLoader = true;
+            performSave(item)
                 .then(function() {
                     vm.showLoader = false;
                 })
@@ -189,28 +191,18 @@
             );
         }
 
-        function save() {
+        function saveAll() {
             vm.showLoader = true;
-            SzpejeApi.deleteSzpeje()
-                .then(function(){
-                    var payload = _.map(vm.localSzpeje, function(item) {
-                        return {
-                            src : item.src,
-                            id : item.id,
-                            categoryId : item.categoryId,
-                            categoryName : item.categoryName,
-                            caption_plain: item.caption_plain,
-                            available: item.available,
-                            json: JSON.stringify(item)
-                        };
-                    });
-                    SzpejeApi.insertSzpeje(payload)
-                        .then(function() {
-                            vm.showLoader = false;
-                              $rootScope.$broadcast('szpeje-saved');
-                        }
-                    );
-                });
+            var promises = _.map(vm.localSzpeje, function(item) {
+                return performSave(item);
+            });
+
+            $q.all(promises)
+                .then(function() {
+                    vm.showLoader = false;
+                      $rootScope.$broadcast('szpeje-saved');
+                }
+            );
         }
 
     }

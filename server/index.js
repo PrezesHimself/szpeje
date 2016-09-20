@@ -9,8 +9,8 @@ var root = './dist';
 var bodyParser = require('body-parser');
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb'}));
 // app.use(function(req, res, next) {
 //     var user = auth(req);
 //
@@ -25,11 +25,7 @@ app.use(bodyParser.json());
 
 app.set('port', (process.env.PORT || 5000));
 app.use(compression());
-app.use('/webapp/app', express.static(root));
-
-app.get('/webapp', function(req, res) {
-    res.sendFile(path.resolve(root) + '/app.html');
-});
+app.use('/app', express.static(root));
 
 app.get('/', function(req, res) {
     res.sendFile(path.resolve(root) + '/index.html');
@@ -38,7 +34,7 @@ app.get('/', function(req, res) {
 require('./api/index.js');
 require('./auth/index.js');
 
-app.use(fallback('app.html', { root: root }));
+app.use(fallback('index.html', { root: root }));
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });

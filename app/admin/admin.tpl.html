@@ -16,7 +16,7 @@
     <form role="form" class="form-inline">
         <button type="button" name="button" ng-click='vm.logout()' class="btn btn-default">logout</button>
         <button type="button" name="button" ng-click='vm.synchronize()' class="btn btn-default">sync</button>
-        <button type="button" name="button" ng-click='vm.save()' class="btn btn-primary">save all</button>
+        <button type="button" name="button" ng-click='vm.saveAll()' class="btn btn-primary">save all</button>
     </form>
     <br>
 
@@ -69,7 +69,7 @@
                       <a href="#" ng-click="item.remove()">
                           <i class="fa fa-times" aria-hidden="true"></i>
                       </a>
-                      <a href="#" ng-click="vm.synchronizeOne(item)">
+                      <a href="#" ng-click="vm.saveOne(item)">
                           <i class="fa fa-check" aria-hidden="true"></i>
                       </a>
                   </td>

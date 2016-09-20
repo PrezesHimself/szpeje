@@ -30,8 +30,8 @@ gulp.task('critical', ['build'], function () {
 	critical.generate({
 		inline: true,
 		base: './',
-		src: 'dist/app.html',
-		dest: 'dist/app.html',
+		src: 'dist/index.html',
+		dest: 'dist/index.html',
 		minify: true,
 		width: 1024,
 		height: 500

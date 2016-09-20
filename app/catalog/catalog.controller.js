@@ -2,7 +2,7 @@
 
 (function() {
 
-    function CatalogController(SzpejeApi, $stateParams, $uibModal) {
+    function CatalogController(SzpejeApi, $stateParams, $uibModal, $q) {
         var vm = this;
 
         vm.openContactModal = openContactModal;
@@ -10,10 +10,18 @@
         this.openImage = openImage;
         vm.slides = [];
 
+        var cateogryPromise = SzpejeApi.getCategorieByName($stateParams.catgoryId)
+            .then(function(result){
+                vm.category = result;
+            });
+
         if($stateParams.itemId) {
-            SzpejeApi.getSzpejeById($stateParams.itemId)
+            $q.all([
+                cateogryPromise,
+                SzpejeApi.getSzpejeById($stateParams.itemId)
+            ])
                 .then(function (result) {
-                    vm.szpeja = result;
+                    vm.szpeja = result[1];
                     var currIndex = 0;
                     _.each(vm.szpeja.modules, function(item) {
                         if(!item.sizes) {
@@ -26,7 +34,8 @@
                             id: currIndex++
                         });
                     });
-                })
+                });
+
         } else if (!$stateParams.catgoryId) {
             SzpejeApi.getSzpeje()
                 .then(function(results) {
@@ -41,9 +50,6 @@
             });
 
         } else if($stateParams.catgoryId){
-          vm.category = _.find(SzpejeApi.getCategories(), function(item) {
-            return item.id == $stateParams.catgoryId;
-          });
 
           SzpejeApi.getSzpejeByCategoryId($stateParams.catgoryId)
             .then(function(results)  {
@@ -102,7 +108,7 @@
         }
     }
 
-    CatalogController.$inject = ['SzpejeApi', '$stateParams', '$uibModal']
+    CatalogController.$inject = ['SzpejeApi', '$stateParams', '$uibModal', '$q']
 
     angular.module('szpeje.catalog')
         .controller('CatalogController', CatalogController);

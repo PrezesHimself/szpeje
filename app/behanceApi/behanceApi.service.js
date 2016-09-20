@@ -5,7 +5,7 @@ angular.module('szpeje.behanceApi', [])
 
 
         var user = 'szpeje';
-        var apiKey = 'ONmbhVbzOEFvhmBHVfkOZfqLN4SX8FIz';
+        var apiKey = '2BqtKltLmzjwtcnjw41xNsrmRdM41rpr';
 
         this.getUser = function() {
             var url = 'http://www.behance.net/v2/users/'+ user +'?api_key='+ apiKey +'&callback=JSON_CALLBACK';
