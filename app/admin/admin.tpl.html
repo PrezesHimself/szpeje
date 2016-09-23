@@ -31,6 +31,9 @@
                   <td title="'Go'" sortable="'name'">
                       <button type="button" class="btn btn-default" ui-sref="app.catalog({catgoryId: item.categoryId, itemId: item.id})">@</button>
                   </td>
+                  <td title="'Order'" sortable="'order'" style="max-width: 20px;">
+                      <input type="text" name="order" value="" ng-model="item.order" class="form-control">
+                  <td>
                   <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
                       <input type="text" name="name" value="" ng-model="item.name" class="form-control">
                   </td>
