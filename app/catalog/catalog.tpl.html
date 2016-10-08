@@ -30,7 +30,7 @@
               {{vm.szpeja.price}} PLN
             </p>
             <p class="hide-for-small">
-              <a href="#" class="szp-order-button" ng-click="vm.openContactModal(vm.szpeja.name)"> Zapytaj/zamów </a>
+              <a href="#" class="szp-order-button" ng-click="vm.openContactModal(vm.szpeja.name)" ng-if="vm.szpeja.price && !vm.category.hidePrice"> Zapytaj/zamów </a>
             </p>
             <p class="szp-szpeja__desc">
                 {{vm.szpeja.description}}
