@@ -40,13 +40,15 @@
             SzpejeApi.getSzpeje()
                 .then(function(results) {
 
-            results.data = _.filter(results.data, {available: true});
+                results.data = _.filter(results.data, {available: true});
 
-            var res = _.map(results.data, function(item) {
-                return JSON.parse(item.json);
-            });
+                var res = _.map(results.data, function(item) {
+                    return JSON.parse(item.json);
+                });
 
-                vm.projects = res;
+                vm.projects = _.reject(res, function (item) {
+                   return item.categoryId !== 'sprzedane';
+                });
             });
 
         } else if($stateParams.catgoryId){
