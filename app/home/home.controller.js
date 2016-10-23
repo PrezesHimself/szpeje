@@ -15,7 +15,7 @@
             });
 
             vm.projects = _.reject(res, function (item) {
-                return item.categoryId !== 'sprzedane';
+                return item.categoryId === 'sprzedane';
             });
         });
 
