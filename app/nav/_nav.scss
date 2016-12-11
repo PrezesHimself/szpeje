@@ -35,7 +35,8 @@
         display: flex;
         justify-content: space-between;
         &__static-nav {
-          display: block;
+          display: flex;
+          align-items: center;
           ul {
             display: flex;
             height: 100%;
