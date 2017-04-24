@@ -51,6 +51,7 @@ gulp.task('js', function () {
 			'./bower_components/satellizer/satellizer.js',
 			'./bower_components/lodash/dist/lodash.js',
 			'./bower_components/ng-table/dist/ng-table.js',
+			'./bower_components/angular-preload-image/angular-preload-image.js',
 			'./app/**/*.js'
 		])
 	  	.pipe(concat('szpeje.js'))

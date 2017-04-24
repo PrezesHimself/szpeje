@@ -19,7 +19,8 @@ angular.module('szpeje', [
   'ngTouch',
   'satellizer',
   'ngTable',
-  'ngMessages'
+  'ngMessages',
+  'angular-preload-image'
 ])
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$authProvider',
         function($urlRouterProvider, $stateProvider, $locationProvider, $authProvider) {

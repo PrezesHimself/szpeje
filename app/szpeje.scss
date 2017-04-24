@@ -23,7 +23,9 @@ body, html {
   font-family: 'Open Sans', sans-serif;
   font-size: 100%;
 }
-
+body {
+  overflow-y: scroll;
+}
 .projects {
   float: left;
   width: 200px;
